@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  explanation: MyString
+  amount: 9.99
+  transaction_date: 2017-02-03
+  category: MyString
+  transaction_type: MyString
+
+two:
+  explanation: MyString
+  amount: 9.99
+  transaction_date: 2017-02-03
+  category: MyString
+  transaction_type: MyString

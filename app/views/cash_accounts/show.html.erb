@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @cash_account.name %>
+</p>
+
+<p>
+  <strong>Balance:</strong>
+  <%= @cash_account.balance %>
+</p>
+
+<%= link_to 'Edit', edit_cash_account_path(@cash_account) %> |
+<%= link_to 'Back', cash_accounts_path %>
