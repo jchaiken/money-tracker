@@ -14,7 +14,10 @@ class TransactionsController < ApplicationController
 
   # GET /transactions/new
   def new
+    @cash_account = CashAccount.find(params[:cash_account_id])
     @transaction = Transaction.new
+    
+    
   end
 
   # GET /transactions/1/edit
@@ -24,8 +27,12 @@ class TransactionsController < ApplicationController
   # POST /transactions
   # POST /transactions.json
   def create
-    @transaction = Transaction.new(transaction_params)
-
+    @transaction = Transaction.create(transaction_params)
+    if @transaction.cash_account_id.present?
+      @cash_account = CashAccount.find(@transaction.cash_account_id)
+      @transaction.credit
+      @cash_account.add_to_balance
+    end
     respond_to do |format|
       if @transaction.save
         format.html { redirect_to @transaction, notice: 'Transaction was successfully created.' }
@@ -69,6 +76,6 @@ class TransactionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def transaction_params
-      params.require(:transaction).permit(:explanation, :amount, :transaction_date, :category, :transaction_type)
+      params.require(:transaction).permit(:explanation, :amount, :transaction_date, :category, :transaction_type, :bank_account_id, :cash_account_id, :credit_card_id, :bill_id)
     end
 end

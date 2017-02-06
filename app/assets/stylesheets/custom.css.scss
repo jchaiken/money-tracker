@@ -1,3 +1,14 @@
 @import "bootstrap-sprockets";
 
 @import "bootstrap";
+
+a {
+    background-color: none;
+    color: blue;
+    text-decoration: none;
+}
+
+a.button-list {
+    text-decoration: none;
+}
+

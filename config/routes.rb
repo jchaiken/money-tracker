@@ -12,6 +12,21 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'pages#home'
 
+  resources :bills do
+    resources :transactions
+  end
+  
+  resources :credit_cards do
+    resources :transactions
+  end
+  
+  resources :cash_accounts do
+    resources :transactions
+  end
+  
+  resources :bank_accounts do
+    resources :transactions
+  end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

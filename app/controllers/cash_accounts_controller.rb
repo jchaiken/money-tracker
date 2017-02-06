@@ -10,6 +10,7 @@ class CashAccountsController < ApplicationController
   # GET /cash_accounts/1
   # GET /cash_accounts/1.json
   def show
+    @transactions = @cash_account.transactions
   end
 
   # GET /cash_accounts/new
@@ -69,6 +70,6 @@ class CashAccountsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cash_account_params
-      params.require(:cash_account).permit(:name, :balance)
+      params.require(:cash_account).permit(:name, :balance, transactions_attributes: [:id, :amount])
     end
 end

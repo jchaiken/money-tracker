@@ -19,18 +19,32 @@
     <%= f.label :amount %><br>
     <%= f.text_field :amount %>
   </div>
-  <div class="field">
-    <%= f.label :transaction_date %><br>
-    <%= f.date_select :transaction_date %>
-  </div>
+  <!--<div class="field">-->
+    <%#= f.label :transaction_date %><br>
+    <%#= f.date_select :transaction_date, class: "form-control" %>
+  <!--</div>-->
   <div class="field">
     <%= f.label :category %><br>
     <%= f.text_field :category %>
   </div>
   <div class="field">
     <%= f.label :transaction_type %><br>
-    <%= f.text_field :transaction_type %>
+    <%= f.select("transaction_type", ["Credit", "Debit"], {include_blank: '-- Select One --'}, required: true, class: "my-selector") %>
   </div>
+  
+  <% if @cash_account.present? %>
+    <div class="field">
+      <%= f.hidden_field :cash_account_id, value: @cash_account.id %>
+    </div>
+  
+  <% else %>
+  <div class="field">
+      <%= f.label :cash_account_id %><br>
+      <%= f.select(:cash_account_id, CashAccount.all.collect {|c| [ c.name, c.id ] }, {include_blank: '-- Select One --'}, required: true, class: "my-selector") %>
+    </div>
+  
+  <% end %>
+  
   <div class="actions">
     <%= f.submit %>
   </div>
