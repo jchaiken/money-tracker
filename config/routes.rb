@@ -2,10 +2,6 @@ Rails.application.routes.draw do
   resources :related_accounts
   resources :accounts
   resources :transactions
-  resources :bills
-  resources :credit_cards
-  resources :cash_accounts
-  resources :bank_accounts
   get 'pages/home'
 
   # The priority is based upon order of creation: first created -> highest priority.
