@@ -4,7 +4,6 @@
       <div class="navbar-header">
         <a class="navbar-brand" href="#" >Money Tracker   </a>
       </div>
-      
       <%= image_tag 'sunset.jpg', class: "img-circle", size: "50x40" %>
       <%= image_tag 'sky.jpg', class: "img-circle", size: "50x40" %>
     </div>
@@ -17,6 +16,7 @@
         <a href="<%= bank_accounts_path %>" class="btn btn-info btn-lg btn-block" role="button">Bank Account<br>Balance: $<%#= @bank.balance %></a>
         <a href="<%= bills_path %>" class="btn btn-warning btn-lg btn-block" role="button">Bills due this month<br>Total</a>
         <a href="<%= credit_cards_path %>" class="btn btn-danger btn-lg btn-block" role="button">Credit Card Debt<br>Balance</a>
+        <a href="<%= new_account_path %>" class="btn btn-info btn-md btn-block" role="button">New Account</a>
       </div>
     </div>
   </div>

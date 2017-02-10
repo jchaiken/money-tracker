@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  account_type: MyString
+  balance: 9.99
+  due_date: 2017-02-10
+
+two:
+  name: MyString
+  account_type: MyString
+  balance: 9.99
+  due_date: 2017-02-10

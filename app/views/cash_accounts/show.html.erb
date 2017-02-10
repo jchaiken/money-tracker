@@ -1,17 +1,10 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @cash_account.name %>
-</p>
-
-<p>
-  <strong>Balance:</strong>
-  <%= @cash_account.balance %>
-</p>
-
-<%= link_to 'Edit', edit_cash_account_path(@cash_account) %> |
-<%= link_to 'Back', cash_accounts_path %>
-
-<%= render template: "transactions/cash_transactions"  %>
-<br>
+<div class="page-content">
+  <h3><%= "#{@cash_account.name} Cash   $#{@cash_account.balance}" %></h3>
+  
+  <%= link_to 'Edit', edit_cash_account_path(@cash_account) %> |
+  <%= link_to 'Back', cash_accounts_path %>
+  
+  <%= render template: "transactions/cash_transactions"  %>
+  <br>
+</div>

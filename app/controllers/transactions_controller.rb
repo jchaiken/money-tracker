@@ -14,7 +14,7 @@ class TransactionsController < ApplicationController
 
   # GET /transactions/new
   def new
-    @cash_account = CashAccount.find(params[:cash_account_id])
+    @account = Account.find(params[:account_id])
     @transaction = Transaction.new
     
     
@@ -28,10 +28,24 @@ class TransactionsController < ApplicationController
   # POST /transactions.json
   def create
     @transaction = Transaction.create(transaction_params)
-    if @transaction.cash_account_id.present?
-      @cash_account = CashAccount.find(@transaction.cash_account_id)
-      @transaction.credit
-      @cash_account.add_to_balance
+    if @transaction.account_id.present? 
+      @account = Account.find(@transaction.account_id)
+      if @transaction.related_account_id.present?
+        @related_account = RelatedAccount.find(@transaction.related_account_id)
+        if @transaction.transaction_type == "Credit"
+          @transaction.add_to_account_balance
+          @transaction.subtract_from_related_balance
+        elsif @transaction.transaction_type == "Debit"
+          @transaction.subtract_from_account_balance
+          @transaction.add_to_related_balance
+        end
+      else
+        if @transaction.transaction_type == "Credit"
+          @transaction.add_to_account_balance
+        elsif @transaction.transaction_type == "Debit"
+          @transaction.subtract_from_account_balance
+        end
+      end
     end
     respond_to do |format|
       if @transaction.save
@@ -76,6 +90,6 @@ class TransactionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def transaction_params
-      params.require(:transaction).permit(:explanation, :amount, :transaction_date, :category, :transaction_type, :bank_account_id, :cash_account_id, :credit_card_id, :bill_id)
+      params.require(:transaction).permit(:explanation, :amount, :transaction_date, :category, :transaction_type, :account_id, :related_account_id)
     end
 end

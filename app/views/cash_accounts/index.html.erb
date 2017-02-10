@@ -1,17 +1,18 @@
 <p id="notice"><%= notice %></p>
-
-<h1>Cash Accounts</h1>
-<br>
-<div class="page-content-col">
-  <div class="row">
-    <div class="col-md-6 col-md-offset-3">
-      <% @cash_accounts.each do |cash_account| %>
-        <%= link_to "#{cash_account.name}    $#{cash_account.balance}", cash_account_path(cash_account), class:"button-list", role: "button" %> 
-        <br>
-      <% end %>
-    </div>  
+  <div class="page-content">
+  <h1>Cash Accounts</h1>
+  <br>
+  <div class="page-content-col">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <% @cash_accounts.each do |cash_account| %>
+          <%= link_to "#{cash_account.name}    $#{cash_account.balance}", cash_account_path(cash_account), class:"button-list", role: "button" %> 
+          <br>
+        <% end %>
+      </div>  
+    </div>
   </div>
+  <br>
+  
+  <%= link_to 'New Cash account', new_cash_account_path %>
 </div>
-<br>
-
-<%= link_to 'New Cash account', new_cash_account_path %>

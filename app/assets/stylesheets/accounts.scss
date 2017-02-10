@@ -1,7 +1,6 @@
-// Place all the styles related to the CashAccounts controller here.
+// Place all the styles related to the Accounts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
 h1, h3 {
     text-align: center;
 }
@@ -60,4 +59,22 @@ a.button-list {
 a.button-list:hover {
     background-color: #008CBA; /* Blue */
     color: white;
+}
+
+.datetime select:nth-child(1){
+  width: 130px;
+  text-indent: 15px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+.datetime select:nth-child(2) {
+  width: 200px;
+  text-indent: 5px;
+}
+
+.datetime select:nth-child(3) {
+  width: 110px;
+  text-indent: 15px;
 }

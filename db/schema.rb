@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170203161303) do
+ActiveRecord::Schema.define(version: 20170210152608) do
+
+  create_table "accounts", force: :cascade do |t|
+    t.string   "name"
+    t.string   "account_type"
+    t.decimal  "balance"
+    t.date     "due_date"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
 
   create_table "bank_accounts", force: :cascade do |t|
     t.string   "name"
@@ -43,23 +52,31 @@ ActiveRecord::Schema.define(version: 20170203161303) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "related_accounts", force: :cascade do |t|
+    t.string   "name"
+    t.string   "account_type"
+    t.decimal  "balance"
+    t.date     "due_date"
+    t.integer  "account_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "related_accounts", ["account_id"], name: "index_related_accounts_on_account_id"
+
   create_table "transactions", force: :cascade do |t|
     t.string   "explanation"
     t.decimal  "amount"
     t.date     "transaction_date"
     t.string   "category"
     t.string   "transaction_type"
-    t.integer  "bank_account_id"
-    t.integer  "cash_account_id"
-    t.integer  "credit_card_id"
-    t.integer  "bill_id"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "account_id"
+    t.integer  "related_account_id"
   end
 
-  add_index "transactions", ["bank_account_id"], name: "index_transactions_on_bank_account_id"
-  add_index "transactions", ["bill_id"], name: "index_transactions_on_bill_id"
-  add_index "transactions", ["cash_account_id"], name: "index_transactions_on_cash_account_id"
-  add_index "transactions", ["credit_card_id"], name: "index_transactions_on_credit_card_id"
+  add_index "transactions", ["account_id"], name: "index_transactions_on_account_id"
+  add_index "transactions", ["related_account_id"], name: "index_transactions_on_related_account_id"
 
 end
