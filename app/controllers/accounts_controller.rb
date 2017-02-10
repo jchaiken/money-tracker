@@ -11,7 +11,8 @@ class AccountsController < ApplicationController
   # GET /accounts/1
   # GET /accounts/1.json
   def show
-    @transactions = @account.transactions
+    @related_account = RelatedAccount.find(@account.id)
+    @transactions = @account.transactions + @related_account.transactions
   end
 
   # GET /accounts/new
