@@ -12,10 +12,10 @@
   <div class="page-content-col">
     <div class="row">
       <div class="col-md-6 col-md-offset-3">
-        <!--<a href="<%#= cash_accounts_path %>" class="btn btn-success btn-lg btn-block" role="button">Cash on Hand<br>Balance: $<%#= @cash.balance %></a>-->
-        <!--<a href="<%#= bank_accounts_path %>" class="btn btn-info btn-lg btn-block" role="button">Bank Account<br>Balance: $<%#= @bank.balance %></a>-->
-        <!--<a href="<%#= bills_path %>" class="btn btn-warning btn-lg btn-block" role="button">Bills due this month<br>Total</a>-->
-        <!--<a href="<%#= credit_cards_path %>" class="btn btn-danger btn-lg btn-block" role="button">Credit Card Debt<br>Balance</a>-->
+        <a href="<%= accounts_path %>" class="btn btn-success btn-lg btn-block" role="button">Cash on Hand<br>Balance: $<%= @cash_accounts.sum(:balance) %></a>
+        <a href="<%= accounts_path %>" class="btn btn-info btn-lg btn-block" role="button">Bank Account<br>Balance: $<%= @bank_accounts.sum(:balance) %></a>
+        <a href="<%= accounts_path %>" class="btn btn-warning btn-lg btn-block" role="button">Bills due this month<br>Total: $<%= @bills.sum(:balance) %></a>
+        <a href="<%= accounts_path %>" class="btn btn-danger btn-lg btn-block" role="button">Credit Card Debt<br>Total: $<%= @credit_cards.sum(:balance) %></a>
         <a href="<%= new_account_path %>" class="btn btn-info btn-md btn-block" role="button">New Account</a>
       </div>
     </div>

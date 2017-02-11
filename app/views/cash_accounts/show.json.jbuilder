@@ -1,1 +1,0 @@
-json.partial! "cash_accounts/cash_account", cash_account: @cash_account

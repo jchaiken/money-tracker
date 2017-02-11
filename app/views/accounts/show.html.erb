@@ -1,25 +1,12 @@
 <p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @account.name %>
-</p>
-
-<p>
-  <strong>Account type:</strong>
-  <%= @account.account_type %>
-</p>
-
-<p>
-  <strong>Balance:</strong>
-  <%= @account.balance %>
-</p>
-
-<p>
-  <strong>Due date:</strong>
-  <%= @account.due_date %>
-</p>
-
+<div class="page-content">
+  <% if @account.account_type == "Cash" || @account.account_type == "Bank" %>
+    <h3><%= "#{@account.name}   Balance: $#{@account.balance}" %></h3>
+  <% elsif @account.account_type == "Credit Card" || @account.account_type == "Bill"  %>
+    <h3><%= "#{@account.name}   Balance: $#{@account.balance}  Due Date: #{@account.due_date.strftime("%m-%d-%Y")}" %></h3>
+  <% end %>
+<br>
 <%= link_to 'Edit', edit_account_path(@account) %> |
 <%= link_to 'Back', accounts_path %>
 <%= render template: "transactions/cash_transactions" %>
+</div>
