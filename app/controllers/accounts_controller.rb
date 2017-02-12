@@ -44,8 +44,9 @@ class AccountsController < ApplicationController
   # PATCH/PUT /accounts/1
   # PATCH/PUT /accounts/1.json
   def update
+    @related_account = RelatedAccount.find(@account.id)
     respond_to do |format|
-      if @account.update(account_params)
+      if @account.update(account_params) && @related_account.update(account_params)
         format.html { redirect_to @account, notice: 'Account was successfully updated.' }
         format.json { render :show, status: :ok, location: @account }
       else
@@ -58,11 +59,33 @@ class AccountsController < ApplicationController
   # DELETE /accounts/1
   # DELETE /accounts/1.json
   def destroy
+    @related_account = RelatedAccount.find(@account.id)
+    @related_account.destroy
     @account.destroy
     respond_to do |format|
       format.html { redirect_to accounts_url, notice: 'Account was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+  
+  def cash_accounts
+    @accounts = Account.all
+    @cash_accounts = @accounts.cash
+  end
+  
+  def bank_accounts
+    @accounts = Account.all
+    @bank_accounts = @accounts.bank
+  end
+  
+  def credit_cards
+    @accounts = Account.all
+    @credit_cards = @accounts.credit_card
+  end
+  
+  def bills
+    @accounts = Account.all
+    @bills = @accounts.bill
   end
 
   private

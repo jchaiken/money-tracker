@@ -5,7 +5,7 @@
             <tr>
               <td><%= transaction.created_at.strftime("%m-%d-%Y") %></td>
               <td><%= transaction.explanation %></td>
-              <td><%= link_to "#{transaction.amount}", transaction %></td>
+              <td><%= link_to "#{number_to_currency(transaction.amount)}", transaction %></td>
             </tr>
           </a>
         <% end %>

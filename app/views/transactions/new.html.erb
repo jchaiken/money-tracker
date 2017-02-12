@@ -1,5 +1,5 @@
 <div class="page-content">
-  <h1>New Transaction</h1>
+  <h1><%= "#{@account.name}" %> Transaction (Current Balance: <%= "#{number_to_currency(@account.balance)}"  %>)</h1>
   
   <%= render 'form' %>
   
