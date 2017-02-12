@@ -13,8 +13,7 @@
               <th>Account type</th>
               <th>Balance</th>
               <th>Due date</th>
-              <!--<th>Transaction</th>-->
-              <th colspan="3"></th>
+              <th colspan="1"></th>
             </tr>
           </thead>
         
@@ -24,11 +23,33 @@
                 <td><%= account.name %></td>
                 <td><%= account.account_type %></td>
                 <td><%= account.balance %></td>
-                <td><%= account.due_date %></td>
-                <!--<td><%#= account.transaction %></td>-->
-                <td><%= link_to 'Show', account %></td>
-                <td><%= link_to 'Edit', edit_account_path(account) %></td>
-                <td><%= link_to 'Destroy', account, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <% if account.account_type == "Credit Card" || account.account_type == "Bill" %>
+                  <td><%= account.due_date.strftime("%m-%d-%Y") %></td>
+                <% else %>
+                  <td>None</td>
+                <% end %>
+                <td>
+                  <div class="btn-group pull-right">
+                      <button class="btn blue btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">Actions</button>
+                      <ul class="dropdown-menu pull-right">
+                        <li>
+                          <%= link_to account_path(account) do %>
+                              View
+                          <% end %>
+                        </li>
+                        <li>
+                          <%= link_to edit_account_path(account) do %>
+                              Edit
+                          <% end %>
+                        </li>
+                        <li>
+                          <%= link_to account, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                              Delete
+                          <% end %>
+                        </li>
+                      </ul>
+                  </div>
+                </td>
               </tr>
             <% end %>
           </tbody>
@@ -45,8 +66,7 @@
               <th>Account type</th>
               <th>Balance</th>
               <th>Due date</th>
-              <!--<th>Transaction</th>-->
-              <th colspan="3"></th>
+              <th colspan="1"></th>
             </tr>
           </thead>
         
@@ -56,11 +76,33 @@
                 <td><%= account.name %></td>
                 <td><%= account.account_type %></td>
                 <td><%= account.balance %></td>
-                <td><%= account.due_date %></td>
-                <!--<td><%#= account.transaction %></td>-->
-                <td><%= link_to 'Show', account %></td>
-                <td><%= link_to 'Edit', edit_related_account_path(account) %></td>
-                <td><%= link_to 'Destroy', account, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                <% if account.account_type == "Credit Card" || account.account_type == "Bill" %>
+                  <td><%= account.due_date.strftime("%m-%d-%Y") %></td>
+                <% else %>
+                  <td>None</td>
+                <% end %>
+                <td>
+                  <div class="btn-group pull-right">
+                      <button class="btn blue btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">Actions</button>
+                      <ul class="dropdown-menu pull-right">
+                        <li>
+                          <%= link_to related_account_path(account) do %>
+                              View
+                          <% end %>
+                        </li>
+                        <li>
+                          <%= link_to edit_related_account_path(account) do %>
+                              Edit
+                          <% end %>
+                        </li>
+                        <li>
+                          <%= link_to account, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                              Delete
+                          <% end %>
+                        </li>
+                      </ul>
+                  </div>
+                </td>
               </tr>
             <% end %>
           </tbody>

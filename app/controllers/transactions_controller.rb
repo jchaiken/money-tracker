@@ -22,6 +22,7 @@ class TransactionsController < ApplicationController
 
   # GET /transactions/1/edit
   def edit
+    @account = @transaction.account
   end
 
   # POST /transactions

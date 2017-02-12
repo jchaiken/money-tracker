@@ -16,13 +16,13 @@ class AccountsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create account" do
-    assert_difference('Account.count') do
-      post :create, account: { account_type: @account.account_type, balance: @account.balance, due_date: @account.due_date, name: @account.name }
-    end
+  # test "should create account" do
+  #   assert_difference('Account.count') do
+  #     post :create, account: { account_type: @account.account_type, balance: @account.balance, due_date: @account.due_date, name: @account.name }
+  #   end
 
-    assert_redirected_to account_path(assigns(:account))
-  end
+  #   assert_redirected_to account_path(assigns(:account))
+  # end
 
   test "should show account" do
     get :show, id: @account

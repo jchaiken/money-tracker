@@ -1,5 +1,4 @@
-<div class="page-content-col">
-  <div class="col-md-6 col-md-offset-3">
+
     <a href="#" class="button-list" role="button">Transactions<br><br>
       <table class="table">
         <% @transactions.each do |transaction| %>
@@ -12,8 +11,6 @@
         <% end %>
       </table>
     <%= link_to 'New Transaction', new_account_transaction_path(@account) %>
-  </div>
-</div>
 
   <!--<table>-->
     <!--  <thead>-->
