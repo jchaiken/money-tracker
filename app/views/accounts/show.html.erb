@@ -10,7 +10,15 @@
   <div class="page-content-col">
     <div class="col-md-6 col-md-offset-3">
       <%= link_to 'Edit Account', edit_account_path(@account) %> |
-      <%= link_to 'Back to Accounts', accounts_path %>
+      <% if @account.account_type == "Cash" %>
+        <%= link_to 'Back to Cash Accounts', cash_accounts_path %>
+      <% elsif @account.account_type == "Bank" %>
+        <%= link_to 'Back to Bank Accounts', bank_accounts_path %>
+      <% elsif @account.account_type == "Credit Card" %>
+        <%= link_to 'Back to Credit Cards', credit_cards_path %>
+      <% else %>
+        <%= link_to 'Back to Bills', bills_path %>
+      <% end %>
       <%= render template: "transactions/account_transactions" %>
     </div>
   </div>
