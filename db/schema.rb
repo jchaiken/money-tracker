@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170213033403) do
+ActiveRecord::Schema.define(version: 20170213173912) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name"
@@ -23,6 +23,15 @@ ActiveRecord::Schema.define(version: 20170213033403) do
     t.decimal  "principal_balance"
     t.decimal  "apr"
   end
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "transaction_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "categories", ["transaction_id"], name: "index_categories_on_transaction_id"
 
   create_table "related_accounts", force: :cascade do |t|
     t.string   "name"

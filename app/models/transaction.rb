@@ -1,6 +1,7 @@
 class Transaction < ActiveRecord::Base
     belongs_to :account
     belongs_to :related_account
+    has_one :category
     scope :credit, -> {where(transaction_type: 'Credit')}
     scope :debit, -> {where(transaction_type: 'Debit')}
     validates :explanation, presence: true

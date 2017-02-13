@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :categories
   resources :related_accounts
   resources :accounts
   resources :transactions

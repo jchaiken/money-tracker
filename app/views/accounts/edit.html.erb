@@ -1,6 +1,10 @@
-<h1>Editing Account</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @account %> |
-<%= link_to 'Back', accounts_path %>
+<div class="page-content">
+  <h1>Editing Account</h1>
+  <% if @account.account_type == "Bank" || @account.account_type == "Cash" %>
+    <%= render partial: 'form' %>
+  <% else %>
+    <%= render partial: 'update_account' %>
+  <% end %>
+  <%= link_to 'Show', @account %> |
+  <%= link_to 'Back', accounts_path %>
+</div>
