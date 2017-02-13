@@ -34,10 +34,10 @@ class AccountsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should update account" do
-    patch :update, id: @account, account: { account_type: @account.account_type, balance: @account.balance, due_date: @account.due_date, name: @account.name }
-    assert_redirected_to account_path(assigns(:account))
-  end
+  # test "should update account" do
+  #   patch :update, id: @account, account: { account_type: @account.account_type, balance: @account.balance, due_date: @account.due_date, name: @account.name }
+  #   assert_redirected_to account_path(assigns(:account))
+  # end
 
   test "should destroy account" do
     assert_difference('Account.count', -1) do

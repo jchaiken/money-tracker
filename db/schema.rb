@@ -11,15 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170210172914) do
+ActiveRecord::Schema.define(version: 20170213033403) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name"
     t.string   "account_type"
     t.decimal  "balance"
     t.date     "due_date"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.decimal  "principal_balance"
+    t.decimal  "apr"
   end
 
   create_table "related_accounts", force: :cascade do |t|
@@ -28,8 +30,10 @@ ActiveRecord::Schema.define(version: 20170210172914) do
     t.decimal  "balance"
     t.date     "due_date"
     t.integer  "account_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.decimal  "principal_balance"
+    t.decimal  "apr"
   end
 
   add_index "related_accounts", ["account_id"], name: "index_related_accounts_on_account_id"

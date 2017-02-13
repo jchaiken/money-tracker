@@ -17,33 +17,8 @@
         <a href="<%= bills_path %>" class="btn btn-warning btn-lg btn-block" role="button">Bills due this month<br>Total: $<%= @bills.sum(:balance).abs %></a>
         <a href="<%= credit_cards_path %>" class="btn btn-danger btn-lg btn-block" role="button">Credit Card Debt<br>Total: $<%= @credit_cards.sum(:balance).abs %></a>
         <a href="<%= new_account_path %>" class="btn btn-info btn-md btn-block" role="button">New Account</a>
-        <a href="<%= accounts_path %>" class="btn btn-warning btn-md btn-block" role="button">All Accounts</a>
+        <a href="<%= accounts_path %>" class="btn btn-success btn-md btn-block" role="button">All Accounts</a>
       </div>
     </div>
   </div>
 </div>
-
-  <!--<a href="#<%#= account_path(@bill) %>" class="btn btn-warning btn-lg btn-block" role="button">Bills due this month<br>-->
-    <!--  <table class="table">-->
-    <!--    <%# @bill.each do | bill | %>-->
-    <!--      <tr>-->
-    <!--        <td><%#= bill.name %></td>-->
-    <!--        <td><%#= number_to_currency(bill.balance) %></td>-->
-    <!--      </tr>-->
-    <!--    <%# end %>-->
-    <!--  </table>-->
-    <!--</a>-->
-    
-    <!--<a href="<%#= account_path(@bank) %>" class="btn btn-info btn-lg btn-block" role="button">Bank Account<br>Balance: $<%#= @bank.balance %></a>-->
-    
-    <!--<br>-->
-    <!--<%#= link_to('Cash on Hand', account_path(@cash), class: 'btn btn-success btn-lg btn-block', role: 'button')  %>-->
-    <!--<br>-->
-    <%#= link_to account_path(@cash) do %>
-      
-        <!--<p class="btn btn-success btn-lg btn-block" role="button"><%#= @cash.name %><br>Balance: $<%#= @cash.balance %></p>-->
-      
-    <%# end %>
-    
-    <%#= link_to 'Cash', account_path(@cash), class: "btn btn-success btn-lg btn-block" %>
-    <%#= link_to('Cash on Hand', account_path(@cash), class: 'btn btn-success btn-lg btn-block', role: 'button')  %>
