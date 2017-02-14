@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :related_accounts
   resources :accounts
-  resources :transactions
+  resources :notes
   get 'pages/home'
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   root 'pages#home'
   
   resources :accounts do
-    resources :transactions
+    resources :notes
   end
   
   get '/cash_accounts' => 'accounts#cash_accounts'

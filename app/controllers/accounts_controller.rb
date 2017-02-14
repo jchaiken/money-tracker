@@ -12,7 +12,7 @@ class AccountsController < ApplicationController
   # GET /accounts/1.json
   def show
     @related_account = RelatedAccount.find(@account.id)
-    @transactions = @account.transactions + @related_account.transactions
+    @notes = @account.notes + @related_account.notes
   end
 
   # GET /accounts/new
@@ -96,6 +96,6 @@ class AccountsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def account_params
-      params.require(:account).permit(:name, :account_type, :balance, :due_date, :apr, :principal_balance, :transaction_id)
+      params.require(:account).permit(:name, :account_type, :balance, :due_date, :apr, :principal_balance, :note_id)
     end
 end

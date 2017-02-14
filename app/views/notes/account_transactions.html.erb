@@ -1,7 +1,7 @@
 
     <a href="#" class="button-list" role="button">Transactions<br><br>
       <table class="table">
-        <% @transactions.each do |transaction| %>
+        <% @notes.each do |transaction| %>
             <tr>
               <td><%= transaction.created_at.strftime("%m-%d-%Y") %></td>
               <td><%= transaction.explanation %></td>
@@ -10,7 +10,7 @@
           </a>
         <% end %>
       </table>
-    <%= link_to 'New Transaction', new_account_transaction_path(@account) %>
+    <%= link_to 'New Transaction', new_account_note_path(@account) %>
 
   <!--<table>-->
     <!--  <thead>-->

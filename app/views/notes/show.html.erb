@@ -2,23 +2,23 @@
 <div class="page-content">
   <div class="page-content-col">
     <div class="col-md-4 col-md-offset-4">
-      <a href="#<%#= account_path(@bill) %>" class="button-list" role="button"><%= @transaction.explanation %><br><br>
+      <a href="#<%#= account_path(@bill) %>" class="button-list" role="button"><%= @note.explanation %><br><br>
         <p>
           <strong>Transaction type:</strong>
-          <%= @transaction.transaction_type %>
+          <%= @note.transaction_type %>
         </p>
         
         <p>
           <strong>Account:</strong>
-          <%= @transaction.account.name %>
+          <%= @note.account.name %>
         </p>
         
         <p>
           <strong>Amount:</strong>
-          <%= @transaction.amount %>
+          <%= @note.amount %>
         </p>
         
-        <% if @transaction.related_account.present? %>
+        <% if @note.related_account.present? %>
           <p>
             <strong>Related Account:</strong>
             <%= @transaction.related_account.name %>
@@ -27,16 +27,16 @@
         
         <p>
           <strong>Transaction date:</strong>
-          <%= @transaction.created_at.strftime("%m-%d-%Y") %>
+          <%= @note.transaction_date.strftime("%m-%d-%Y") %>
         </p>
         
         <p>
           <strong>Category:</strong>
-          <%= @transaction.category %>
+          <%= @note.category %>
         </p>
         
-        <%= link_to 'Edit', edit_transaction_path(@transaction) %> | 
-        <%= link_to 'Back to Account', account_path(@transaction.account_id) %>
+        <%= link_to 'Edit', edit_note_path(@note) %> | 
+        <%= link_to 'Back to Account', account_path(@note.account_id) %>
       </a>
     </div>
   </div>

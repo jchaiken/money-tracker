@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170213173912) do
+ActiveRecord::Schema.define(version: 20170214035037) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name"
@@ -26,12 +26,25 @@ ActiveRecord::Schema.define(version: 20170213173912) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
-    t.integer  "transaction_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "note_id"
   end
 
-  add_index "categories", ["transaction_id"], name: "index_categories_on_transaction_id"
+  create_table "notes", force: :cascade do |t|
+    t.string   "explanation"
+    t.decimal  "amount"
+    t.date     "transaction_date"
+    t.string   "category"
+    t.string   "transaction_type"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "account_id"
+    t.integer  "related_account_id"
+  end
+
+  add_index "notes", ["account_id"], name: "index_notes_on_account_id"
+  add_index "notes", ["related_account_id"], name: "index_notes_on_related_account_id"
 
   create_table "related_accounts", force: :cascade do |t|
     t.string   "name"
@@ -46,20 +59,5 @@ ActiveRecord::Schema.define(version: 20170213173912) do
   end
 
   add_index "related_accounts", ["account_id"], name: "index_related_accounts_on_account_id"
-
-  create_table "transactions", force: :cascade do |t|
-    t.string   "explanation"
-    t.decimal  "amount"
-    t.date     "transaction_date"
-    t.string   "category"
-    t.string   "transaction_type"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
-    t.integer  "account_id"
-    t.integer  "related_account_id"
-  end
-
-  add_index "transactions", ["account_id"], name: "index_transactions_on_account_id"
-  add_index "transactions", ["related_account_id"], name: "index_transactions_on_related_account_id"
 
 end

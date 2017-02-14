@@ -1,4 +1,4 @@
-class Transaction < ActiveRecord::Base
+class Note < ActiveRecord::Base
     belongs_to :account
     belongs_to :related_account
     has_one :category
