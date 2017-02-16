@@ -13,6 +13,7 @@ class AccountsController < ApplicationController
   def show
     @related_account = RelatedAccount.find(@account.id)
     @notes = @account.notes + @related_account.notes
+    @notes = @notes.paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /accounts/new
