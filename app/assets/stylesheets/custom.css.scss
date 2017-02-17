@@ -57,7 +57,7 @@ a.button-list:hover {
 }
 
 .datetime select:nth-child(1){
-  width: 200px;
+  width: 28%;
   text-indent: 15px;
   padding: 12px 20px;
   margin: 8px 0;
@@ -65,7 +65,7 @@ a.button-list:hover {
 }
 
 .datetime select:nth-child(2) {
-  width: 250px;
+  width: 42%;
   text-indent: 5px;
   padding: 12px 20px;
   margin: 8px 0;
@@ -73,7 +73,7 @@ a.button-list:hover {
 }
 
 .datetime select:nth-child(3) {
-  width: 195px;
+  width: 28%;
   text-indent: 15px;
   padding: 12px 20px;
   margin: 8px 0;
@@ -110,4 +110,11 @@ li a.nav:hover {
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
+}
+
+img {
+    display: block;
+    padding: 8px 16px;
+    margin: auto;
+    width: 100%;
 }
