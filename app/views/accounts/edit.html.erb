@@ -1,10 +1,17 @@
 <div class="page-content">
-  <h1>Editing Account</h1>
-  <% if @account.account_type == "Bank" || @account.account_type == "Cash" %>
-    <%= render partial: 'form' %>
-  <% else %>
-    <%= render partial: 'update_account' %>
-  <% end %>
-  <%= link_to 'Show', @account %> |
-  <%= link_to 'Back', accounts_path %>
+  <div class="page-content-col">
+    <div class="row">
+      <%= render partial: "pages/navigation" %>
+      <h1>Editing Account</h1>
+      <div class="col-md-6 col-md-offset-3">
+        <% if @account.account_type == "Bank" || @account.account_type == "Cash" %>
+          <%= render partial: 'form' %>
+        <% else %>
+          <%= render partial: 'update_account' %>
+        <% end %>
+        <%= link_to 'Show', @account %> |
+        <%= link_to 'Back', accounts_path %>
+      </div>
+    </div>
+  </div>
 </div>

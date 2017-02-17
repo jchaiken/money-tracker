@@ -1,6 +1,11 @@
 <div class="page-content">
-  <h1><%= "#{@account.name}" %> Transaction (Current Balance: <%= "#{number_to_currency(@account.balance)}"  %>)</h1>
-  
-  <%= render 'form' %>
-  
+  <div class="page-content-col">
+    <div class="row">
+      <%= render partial: "pages/navigation" %>
+      <h1><%= "#{@account.name}" %> Transaction (Current Balance: <%= "#{number_to_currency(@account.balance)}"  %>)</h1>
+      <div class="col-md-6 col-md-offset-3">
+        <%= render 'form' %>
+      </div>
+    </div>
+  </div>
 </div>

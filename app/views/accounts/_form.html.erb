@@ -1,37 +1,33 @@
-<div class="page-content-col">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@account) do |f| %>
-      <% if @account.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@account.errors.count, "error") %> prohibited this account from being saved:</h2>
-    
-          <ul>
-          <% @account.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-          </ul>
-        </div>
+<%= form_for(@account) do |f| %>
+  <% if @account.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@account.errors.count, "error") %> prohibited this account from being saved:</h2>
+
+      <ul>
+      <% @account.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
       <% end %>
-    
-      <div class="field">
-        <%= f.label :name %><br>
-        <%= f.text_field :name %>
-      </div>
-      <div class="field">
-        <%= f.label :account_type %><br>
-        <%= f.select("account_type", ["Bank", "Cash", "Credit Card", "Bill"], {include_blank: '-- Select One --'}, required: true, class: "my-selector") %>
-      </div>
-      <div class="field">
-        <%= f.label :balance %><br>
-        <%= f.text_field :balance %>
-      </div>
-      <div class="field">
-        <%= f.label :due_date %><br>
-        <span class="datetime"><%= f.date_select :due_date, :prompt => { :day => 'Select day', :month => 'Select month', :year => 'Select year' }, :order => [:day, :month, :year], :start_year => 2017, :end_year => 2022 %></span>
-      </div>
-      <div class="actions">
-        <%= f.submit %>
-      </div>
-    <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
   </div>
-</div>
+  <div class="field">
+    <%= f.label :account_type %><br>
+    <%= f.select("account_type", ["Bank", "Cash", "Credit Card", "Bill"], {include_blank: '-- Select One --'}, required: true, class: "my-selector") %>
+  </div>
+  <div class="field">
+    <%= f.label :balance %><br>
+    <%= f.text_field :balance %>
+  </div>
+  <div class="field">
+    <%= f.label :due_date %><br>
+    <span class="datetime"><%= f.date_select :due_date, :prompt => { :day => 'Select day', :month => 'Select month', :year => 'Select year' }, :order => [:day, :month, :year], :start_year => 2017, :end_year => 2022 %></span>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,50 +1,46 @@
-<div class="page-content-col">
-  <div class="col-md-6 col-md-offset-3">
-    <%= form_for(@note) do |f| %>
-      <% if @note.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@note.errors.count, "error") %> prohibited this transaction from being saved:</h2>
-    
-          <ul>
-          <% @note.errors.full_messages.each do |message| %>
-            <li><%= message %></li>
-          <% end %>
-          </ul>
-        </div>
+<%= form_for(@note) do |f| %>
+  <% if @note.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@note.errors.count, "error") %> prohibited this transaction from being saved:</h2>
+
+      <ul>
+      <% @note.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
       <% end %>
-    
-      <div class="field">
-        <%= f.label :explanation %><br>
-        <%= f.text_field :explanation %>
-      </div>
-      <div class="field">
-        <%= f.label :amount %><br>
-        <%= f.text_field :amount %>
-      </div>
-      <div class="field">
-        <%= f.label :category %><br>
-        <%= f.select(:category, Category.all.collect {|c| [ c.name ] }, {include_blank: '-- Select One --'}, class: "my-selector") %>
-      </div>
-      <div class="field">
-        <%= f.label :transaction_type %><br>
-        <%= f.select("transaction_type", ["Credit", "Debit"], {include_blank: '-- Select One --'}, required: true, class: "my-selector") %>
-      </div>
-      <div class="field">
-        <%= f.label :transaction_date %><br>
-        <span class="datetime"><%= f.date_select :transaction_date, :order => [:day, :month, :year], :start_year => 2017, :end_year => 2022 %></span>
-      </div>
-      <div class="field">
-        <%= f.hidden_field :account_id, value: @account.id %>
-      </div>
-      
-      <div class="field">
-          <%= f.label :related_account_id %><br>
-          <%= f.select(:related_account_id, RelatedAccount.all.collect {|a| [ a.name, a.id ] }, {include_blank: '-- Select One --'}, class: "my-selector") %>
-        </div>
-      
-      <div class="actions">
-        <%= f.submit "Create Transaction" %>
-      </div>
-    <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :explanation %><br>
+    <%= f.text_field :explanation %>
   </div>
-</div>
+  <div class="field">
+    <%= f.label :amount %><br>
+    <%= f.text_field :amount %>
+  </div>
+  <div class="field">
+    <%= f.label :category %><br>
+    <%= f.select(:category, Category.all.collect {|c| [ c.name ] }, {include_blank: '-- Select One --'}, class: "my-selector") %>
+  </div>
+  <div class="field">
+    <%= f.label :transaction_type %><br>
+    <%= f.select("transaction_type", ["Credit", "Debit"], {include_blank: '-- Select One --'}, required: true, class: "my-selector") %>
+  </div>
+  <div class="field">
+    <%= f.label :transaction_date %><br>
+    <span class="datetime"><%= f.date_select :transaction_date, :order => [:day, :month, :year], :start_year => 2017, :end_year => 2022 %></span>
+  </div>
+  <div class="field">
+    <%= f.hidden_field :account_id, value: @account.id %>
+  </div>
+  
+  <div class="field">
+      <%= f.label :related_account_id %><br>
+      <%= f.select(:related_account_id, RelatedAccount.all.collect {|a| [ a.name, a.id ] }, {include_blank: '-- Select One --'}, class: "my-selector") %>
+    </div>
+  
+  <div class="actions">
+    <%= f.submit "Create Transaction" %>
+  </div>
+<% end %>

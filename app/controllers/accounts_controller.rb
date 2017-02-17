@@ -87,6 +87,7 @@ class AccountsController < ApplicationController
   def bills
     @accounts = Account.all
     @bills = @accounts.bill
+    @today = Date.today
   end
 
   private

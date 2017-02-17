@@ -1,50 +1,53 @@
-<p id="notice"><%= notice %></p>
 <div class="page-content">
   <div class="page-content-col">
-    <div class="col-md-4 col-md-offset-4">
-      <a href="#<%#= account_path(@bill) %>" class="button-list" role="button"><%= @note.explanation %><br><br>
-        <p>
-          <strong>Transaction type:</strong>
-          <%= @note.transaction_type %>
-        </p>
-        
-        <p>
-          <strong>Account:</strong>
-          <%= @note.account.name %>
-        </p>
-        
-        <p>
-          <strong>Amount:</strong>
-          <%= @note.amount %>
-        </p>
-        
-        <% if @note.related_account.present? %>
+    <div class="row">
+      <%= render partial: "pages/navigation" %>
+      <p id="notice"><%= notice %></p>
+      <div class="col-md-4 col-md-offset-4">
+        <a href="#<%#= account_path(@bill) %>" class="button-list" role="button"><%= @note.explanation %><br><br>
           <p>
-            <strong>Related Account:</strong>
-            <%= @note.related_account.name %>
+            <strong>Transaction type:</strong>
+            <%= @note.transaction_type %>
           </p>
-        <% end %>
-        
-        <% if @note.transaction_date.present? %>
-        <p>
-          <strong>Transaction date:</strong>
-          <%= @note.transaction_date.strftime("%m-%d-%Y") %>
-        </p>
-        <% else %>
-        <p>
-          <strong>Transaction date:</strong>
-          <%= @note.created_at.strftime("%m-%d-%Y") %>
-        </p>
-        <% end %>
-        
-        <p>
-          <strong>Category:</strong>
-          <%= @note.category %>
-        </p>
-        
-        <%= link_to 'Edit', edit_note_path(@note) %> | 
-        <%= link_to 'Back to Account', account_path(@note.account_id) %>
-      </a>
+          
+          <p>
+            <strong>Account:</strong>
+            <%= @note.account.name %>
+          </p>
+          
+          <p>
+            <strong>Amount:</strong>
+            <%= @note.amount %>
+          </p>
+          
+          <% if @note.related_account.present? %>
+            <p>
+              <strong>Related Account:</strong>
+              <%= @note.related_account.name %>
+            </p>
+          <% end %>
+          
+          <% if @note.transaction_date.present? %>
+          <p>
+            <strong>Transaction date:</strong>
+            <%= @note.transaction_date.strftime("%m-%d-%Y") %>
+          </p>
+          <% else %>
+          <p>
+            <strong>Transaction date:</strong>
+            <%= @note.created_at.strftime("%m-%d-%Y") %>
+          </p>
+          <% end %>
+          
+          <p>
+            <strong>Category:</strong>
+            <%= @note.category %>
+          </p>
+          
+          <%= link_to 'Edit', edit_note_path(@note) %> | 
+          <%= link_to 'Back to Account', account_path(@note.account_id) %>
+        </a>
+      </div>
     </div>
   </div>
 </div>
