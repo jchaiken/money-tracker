@@ -11,3 +11,8 @@ two:
   email: Doe
   #password: foobar
   #password_confirmation: foobar
+
+michael:
+  name: Michael Example
+  email: michael@example.com
+  password_digest: <%= User.digest('password') %>

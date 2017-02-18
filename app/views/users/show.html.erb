@@ -1,14 +1,23 @@
-<p id="notice"><%= notice %></p>
+<div class="page-content">
+  <div class="page-content-col">
+    <div class="row">
+      <%= render partial: "pages/navigation" %>
+      <p id="notice"><%= notice %></p>
+      <div class="col-md-6 col-md-offset-3">
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+        <p>
+          <strong>Name:</strong>
+          <%= @user.name %>
+        </p>
+        
+        <p>
+          <strong>Email:</strong>
+          <%= @user.email %>
+        </p>
+        
+        <%= link_to 'Edit', edit_user_path(@user) %> |
+        <%= link_to 'Back', users_path %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -2,6 +2,12 @@
 
 @import "bootstrap";
 
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
+}
+
 a {
     background-color: none;
     color: blue;
@@ -117,4 +123,15 @@ img {
     padding: 8px 16px;
     margin: auto;
     width: 100%;
+}
+
+/* miscellaneous */
+
+.debug_dump {
+  clear: both;
+  // float: left;
+  width: 75%;
+  margin-top: 45px;
+  text-align: center;
+  @include box_sizing;
 }

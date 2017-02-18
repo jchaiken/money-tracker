@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+
   resources :users
   resources :categories
   resources :related_accounts
@@ -20,6 +22,11 @@ Rails.application.routes.draw do
   get '/bank_accounts' => 'accounts#bank_accounts'
   get '/credit_cards' => 'accounts#credit_cards'
   get '/bills' => 'accounts#bills'
+  
+  #get  '/signup' => 'users#new'
+  get    '/login' => 'sessions#new'
+  post   '/login' => 'sessions#create'
+  delete '/logout' => 'sessions#destroy'
     
   # Example resource route with more complex sub-resources:
   #   resources :products do
