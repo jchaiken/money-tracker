@@ -4,7 +4,8 @@
       <%= render partial: "pages/navigation" %>
       <p id="notice"><%= notice %></p>
       <div class="col-md-4 col-md-offset-4">
-        <a href="#<%#= account_path(@bill) %>" class="button-list" role="button"><%= @note.explanation %><br><br>
+        <div class="button-list" role="button">
+          <h2><%= @note.explanation %></h2><br>
           <p>
             <strong>Transaction type:</strong>
             <%= @note.transaction_type %>
@@ -38,15 +39,15 @@
             <%= @note.created_at.strftime("%m-%d-%Y") %>
           </p>
           <% end %>
-          
+          <% if @note.category.present? %>
           <p>
             <strong>Category:</strong>
-            <%= @note.category %>
+            <%= link_to "#{@note.category.name}", category_path(@note.category) %>
           </p>
-          
+          <% end %>
+        </div>
           <%= link_to 'Edit', edit_note_path(@note) %> | 
           <%= link_to 'Back to Account', account_path(@note.account_id) %>
-        </a>
       </div>
     </div>
   </div>

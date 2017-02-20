@@ -20,8 +20,8 @@
     <%= f.text_field :amount %>
   </div>
   <div class="field">
-    <%= f.label :category %><br>
-    <%= f.select(:category, Category.all.collect {|c| [ c.name ] }, {include_blank: '-- Select One --'}, class: "my-selector") %>
+    <%= f.label :category_id %><br>
+    <%= f.select(:category_id, Category.all.collect {|c| [ c.name, c.id ] }, {include_blank: '-- Select One --'}, class: "my-selector") %>
   </div>
   <div class="field">
     <%= f.label :transaction_type %><br>
