@@ -14,6 +14,12 @@ class CategoriesController < ApplicationController
   # GET /categories/1
   # GET /categories/1.json
   def show
+    if logged_in?
+      @notes = @category.notes
+      @notes = @notes.paginate(:page => params[:page], :per_page => 10)
+    else
+      redirect_to root_path
+    end
   end
 
   # GET /categories/new

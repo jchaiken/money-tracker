@@ -1,4 +1,30 @@
-<p id="notice"><%= notice %></p>
+<div class="page-content">
+  <div class="page-content-col">
+    <div class="row">
+      <%= render partial: "pages/navigation" %>
+      <p id="notice"><%= notice %></p>
+      <div class="col-md-4 col-md-offset-4"><br><br>
+        <%= link_to 'Edit', edit_category_path(@category) %> |
+        <%= link_to 'Back', categories_path %>
+        <div class="button-list" role="button">
+          <h3><%= @category.name %> Transactions</h3><br>
+          <table class="table">
+            <% @notes.each do |transaction| %>
+              <tr>
+                <% if transaction.transaction_date.present? %>
+                  <td><%= transaction.transaction_date.strftime("%m-%d-%Y") %></td>
+                <% else %>
+                <td><%= transaction.created_at.strftime("%m-%d-%Y") %></td>
+                <% end %>
+                <td><%= transaction.explanation %></td>
+                <td><%= link_to "#{number_to_currency(transaction.amount)}", transaction %></td>
+              </tr>
+            <% end %>
+          </table>
+        </div>
+        <%= will_paginate @notes %> <br>
+      </div>
+    </div>
+  </div>
+</div>
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
