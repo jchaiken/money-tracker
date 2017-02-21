@@ -1,5 +1,6 @@
 
-<a href="#" class="button-list" role="button">Transactions<br><br>
+<div class="button-list" role="button">
+  <h3>Transactions</h3><br>
   <table class="table">
     <% @notes.each do |transaction| %>
       <tr>
@@ -13,9 +14,9 @@
       </tr>
     <% end %>
   </table>
-</a>
+</div>
 <%= will_paginate @notes %> <br>
-<%= link_to 'New Transaction', new_account_note_path(@account) %>
+
 
   <!--<table>-->
     <!--  <thead>-->
