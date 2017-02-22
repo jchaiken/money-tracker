@@ -1,69 +1,71 @@
-<p id="notice"><%= notice %></p>
 <div class="page-content">
-  <h1>All Transactions</h1>
   <div class="page-content-col">
     <div class="row">
-      <div class="col-md-8 col-md-offset-2">
-        <%= link_to 'Back to Accounts', accounts_path %>
-        <table>
-          <thead>
-            <tr>
-              <th>Transaction date</th>
-              <th>Account</th>
-              <th>Explanation</th>
-              <th>Amount</th>
-              <th>Related Account</th>
-              <th>Category</th>
-              <th colspan="1"></th>
-            </tr>
-          </thead>
-          
-          <tbody>
-            <% @notes.each do |transaction| %>
+      <%= render partial: "pages/navigation" %>
+      <p id="notice"><%= notice %></p>
+      <h2>All Transactions</h2>
+      <div class="col-md-9 col-md-offset-2">
+        <div class="button-list">
+          <table>
+            <thead>
               <tr>
-                <% if transaction.transaction_date.present? %>
-                <td><%= transaction.transaction_date.strftime("%m-%d-%Y") %></td>
-                <% else %>
-                <td><%= transaction.created_at.strftime("%m-%d-%Y") %></td>
-                <% end %>
-                <td><%= transaction.account.name %></td>
-                <td><%= transaction.explanation %></td>
-                <td><%= number_to_currency(transaction.amount) %></td>
-                <% if transaction.related_account.present? %>
-                  <td><%= transaction.related_account.name %></td>
-                <% else %>
-                  <td>None</td>
-                <% end %>
-                <td><%= transaction.category %></td>
-                <td>
-                  <div class="btn-group pull-right">
-                    <button class="btn blue btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">Actions</button>
-                    <ul class="dropdown-menu pull-right">
-                      <li>
-                        <%= link_to note_path(transaction) do %>
-                            View
-                        <% end %>
-                      </li>
-                      <li>
-                        <%= link_to edit_note_path(transaction) do %>
-                            Edit
-                        <% end %>
-                      </li>
-                      <li>
-                        <%= link_to transaction, method: :delete, data: { confirm: 'Are you sure?' } do %>
-                            Delete
-                        <% end %>
-                      </li>
-                    </ul>
-                  </div>
-                </td>
+                <th>Transaction date</th>
+                <th>Account</th>
+                <th>Explanation</th>
+                <th>Amount</th>
+                <th>Related Account</th>
+                <th>Category</th>
+                <!--<th colspan="1"></th>-->
               </tr>
-            <% end %>
-          </tbody>
-          
-        </table>
-        <%= will_paginate %>
-        <br>
+            </thead>
+            
+            <tbody>
+              <% @notes.each do |transaction| %>
+                <tr>
+                  <% if transaction.transaction_date.present? %>
+                  <td><%= transaction.transaction_date.strftime("%m-%d-%Y") %></td>
+                  <% else %>
+                  <td><%= transaction.created_at.strftime("%m-%d-%Y") %></td>
+                  <% end %>
+                  <td><%= transaction.account.name %></td>
+                  <td><%= transaction.explanation %></td>
+                  <td><%= link_to "#{number_to_currency(transaction.amount)}", transaction %></td>
+                  <% if transaction.related_account.present? %>
+                    <td><%= transaction.related_account.name %></td>
+                  <% else %>
+                    <td>None</td>
+                  <% end %>
+                  <% if transaction.category.present? %>
+                    <td><%= link_to "#{transaction.category.name}", transaction.category %></td>
+                  <% end %>
+                  <!--<td>-->
+                  <!--  <div class="btn-group pull-right">-->
+                  <!--    <button class="btn blue btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">Actions</button>-->
+                  <!--    <ul class="dropdown-menu pull-right">-->
+                  <!--      <li>-->
+                  <!--        <%#= link_to note_path(transaction) do %>-->
+                  <!--            View-->
+                  <!--        <%# end %>-->
+                  <!--      </li>-->
+                  <!--      <li>-->
+                  <!--        <%#= link_to edit_note_path(transaction) do %>-->
+                  <!--            Edit-->
+                  <!--        <%# end %>-->
+                  <!--      </li>-->
+                  <!--      <li>-->
+                  <!--        <%#= link_to transaction, method: :delete, data: { confirm: 'Are you sure?' } do %>-->
+                  <!--            Delete-->
+                  <!--        <%# end %>-->
+                  <!--      </li>-->
+                  <!--    </ul>-->
+                  <!--  </div>-->
+                  <!--</td>-->
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+        <%= will_paginate @notes %>
       </div>
     </div>
   </div>
