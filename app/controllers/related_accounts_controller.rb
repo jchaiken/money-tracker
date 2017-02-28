@@ -93,6 +93,6 @@ class RelatedAccountsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def related_account_params
-      params.require(:related_account).permit(:name, :account_type, :balance, :due_date, :apr, :principal_balance, :account_id, :credit_limit)
+      params.require(:related_account).permit(:name, :account_type, :balance, :due_date, :apr, :credit_limit, :minimum_payment, :account_id)
     end
 end

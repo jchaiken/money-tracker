@@ -6,10 +6,10 @@
       <% if @account.account_type == "Cash" || @account.account_type == "Bank" %>
         <h3><%= "#{@account.name}   Balance: #{number_to_currency(@account.balance)}" %></h3>
       <% elsif @account.account_type == "Credit Card" || @account.account_type == "Bill"  %>
-        <h3><%= "#{@account.name}   Minimum Payment: #{number_to_currency(@account.balance)}" %><br>
+        <h3><%= "#{@account.name}   Minimum Payment: #{number_to_currency(@account.minimum_payment)}" %><br>
             <%= "Due Date: #{@account.due_date.strftime("%m-%d-%Y")}" %><br>
           <% if @account.account_type == "Credit Card" %>
-            <%= "(Principal Balance: #{number_to_currency(@account.principal_balance)}--APR: #{number_to_percentage(@account.apr, precision: 2)})" %>
+            <%= "(Current Balance: #{number_to_currency(@account.balance)}--APR: #{number_to_percentage(@account.apr, precision: 2)})" %>
           <% end %>
         </h3>
       <% end %><br>

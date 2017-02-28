@@ -24,6 +24,14 @@
     <%= f.text_field :balance %>
   </div>
   <div class="field">
+    <%= f.label :minimum_payment %><br>
+    <%= f.text_field :minimum_payment %>
+  </div>
+  <div class="field">
+    <%= f.label :credit_limit %><br>
+    <%= f.text_field :credit_limit %>
+  </div>
+  <div class="field">
     <%= f.label :due_date %><br>
     <span class="datetime"><%= f.date_select :due_date, :prompt => { :day => 'Select day', :month => 'Select month', :year => 'Select year' }, :order => [:day, :month, :year], :start_year => 2017, :end_year => 2022 %></span>
   </div>
