@@ -123,7 +123,7 @@ class AccountsController < ApplicationController
   def bills
     if logged_in?
       @accounts = Account.all
-      @bills = @accounts.bill
+      @bills = @accounts.bill + @accounts.credit_card
       @today = Date.today
     else
       redirect_to root_path

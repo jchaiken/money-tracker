@@ -40,25 +40,30 @@ class NotesController < ApplicationController
   def create
     if logged_in?
       @note = Note.create(note_params)
-      if @note.account_id.present? 
-        @account = Account.find(@note.account_id)
+      @account = Account.find(@note.account_id)
         if @note.related_account_id.present?
           @related_account = RelatedAccount.find(@note.related_account_id)
-          if @note.transaction_type == "Credit"
-            @note.add_to_account_balance
-            @note.subtract_from_related_balance
-          elsif @note.transaction_type == "Debit"
-            @note.subtract_from_account_balance
-            @note.add_to_related_balance
-          end
-        else
-          if @note.transaction_type == "Credit"
-            @note.add_to_account_balance
-          elsif @note.transaction_type == "Debit"
-            @note.subtract_from_account_balance
-          end
         end
-      end
+        
+      @note.process_transaction
+       
+        #   if @note.transaction_type == "Credit"
+        #     @note.add_to_account_balance
+        #     @note.subtract_from_related_balance
+        #   elsif @note.transaction_type == "Debit"
+        #     @note.subtract_from_account_balance
+        #     @note.add_to_related_balance
+        #   end
+          
+        # else
+          
+        #   if @note.transaction_type == "Credit"
+        #     @note.add_to_account_balance
+        #   elsif @note.transaction_type == "Debit"
+        #     @note.subtract_from_account_balance
+          
+        #   end
+        
       respond_to do |format|
         if @note.save
           format.html { redirect_to @note, notice: 'Note was successfully created.' }

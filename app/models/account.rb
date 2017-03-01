@@ -8,4 +8,9 @@ class Account < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
   validates :balance, presence: true
   validates :account_type, presence: true
+  validates :due_date, presence: true
+  
+  def bills_due_total
+    self.where(:created_at => (Time.now.midnight - 1.day)..Time.now.midnight)
+  end
 end

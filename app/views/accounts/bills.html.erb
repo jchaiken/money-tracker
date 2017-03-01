@@ -19,7 +19,7 @@
     <h3>Next Months Bills</h3>
     <div class="col-md-6 col-md-offset-3">
       <% @bills.each do |account| %>
-        <% if account.due_date <= Date.today.next_month && account.due_date > Date.today.end_of_month %>
+        <% if account.due_date > (Date.today.end_of_month) && account.due_date <= Date.today.end_of_month.months_since(1) %>
           <a href="<%= account_path(account) %>" class="button-list" role="button">
             <%= "#{account.name}" %><br>
             <%= "#{number_to_currency(account.balance.abs)}" %>

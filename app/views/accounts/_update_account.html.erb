@@ -20,7 +20,7 @@
     <%= f.select("account_type", ["Bank", "Cash", "Credit Card", "Bill"], {include_blank: '-- Select One --'}, required: true, class: "my-selector") %>
   </div>
   <div class="field">
-    <%= f.label :balance, 'Minimum Payment' %><br>
+    <%= f.label :balance %><br>
     <%= f.text_field :balance %>
   </div>
   <div class="field">

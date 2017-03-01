@@ -15,7 +15,7 @@
                 <th>Amount</th>
                 <th>Related Account</th>
                 <th>Category</th>
-                <!--<th colspan="1"></th>-->
+                <th colspan="1"></th>
               </tr>
             </thead>
             
@@ -38,28 +38,28 @@
                   <% if transaction.category.present? %>
                     <td><%= link_to "#{transaction.category.name}", transaction.category %></td>
                   <% end %>
-                  <!--<td>-->
-                  <!--  <div class="btn-group pull-right">-->
-                  <!--    <button class="btn blue btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">Actions</button>-->
-                  <!--    <ul class="dropdown-menu pull-right">-->
-                  <!--      <li>-->
-                  <!--        <%#= link_to note_path(transaction) do %>-->
-                  <!--            View-->
-                  <!--        <%# end %>-->
-                  <!--      </li>-->
-                  <!--      <li>-->
-                  <!--        <%#= link_to edit_note_path(transaction) do %>-->
-                  <!--            Edit-->
-                  <!--        <%# end %>-->
-                  <!--      </li>-->
-                  <!--      <li>-->
-                  <!--        <%#= link_to transaction, method: :delete, data: { confirm: 'Are you sure?' } do %>-->
-                  <!--            Delete-->
-                  <!--        <%# end %>-->
-                  <!--      </li>-->
-                  <!--    </ul>-->
-                  <!--  </div>-->
-                  <!--</td>-->
+                  <td>
+                    <div class="btn-group pull-right">
+                      <button class="btn blue btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">Actions</button>
+                      <ul class="dropdown-menu pull-right">
+                        <li>
+                          <%= link_to note_path(transaction) do %>
+                              View
+                          <% end %>
+                        </li>
+                        <li>
+                          <%= link_to edit_note_path(transaction) do %>
+                              Edit
+                          <% end %>
+                        </li>
+                        <li>
+                          <%= link_to transaction, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                              Delete
+                          <% end %>
+                        </li>
+                      </ul>
+                    </div>
+                  </td>
                 </tr>
               <% end %>
             </tbody>
