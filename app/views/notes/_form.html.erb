@@ -29,7 +29,7 @@
   </div>
   <div class="field">
     <%= f.label :transaction_date %><br>
-    <span class="datetime"><%= f.date_select :transaction_date, :order => [:day, :month, :year], :start_year => 2017, :end_year => 2022 %></span>
+    <span class="datetime"><%= f.date_select :transaction_date, :default => Date.today, :order => [:day, :month, :year], :start_year => 2017, :end_year => 2022 %></span>
   </div>
   <div class="field">
     <%= f.hidden_field :account_id, value: @account.id %>

@@ -11,6 +11,6 @@ class Account < ActiveRecord::Base
   validates :due_date, presence: true
   
   def bills_due_total
-    self.where(:created_at => (Time.now.midnight - 1.day)..Time.now.midnight)
+    self.where(:due_date => (due_date <= Date.today.end_of_month && due_date >= Date.today.beginning_of_month)).sum(:minimum_payment)
   end
 end

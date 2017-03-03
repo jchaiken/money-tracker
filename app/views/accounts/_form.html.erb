@@ -20,12 +20,10 @@
     <%= f.select("account_type", ["Bank", "Cash", "Credit Card", "Bill"], {include_blank: '-- Select One --'}, required: true, class: "my-selector") %>
   </div>
   <div class="field">
-    <%= f.label :balance %><br>
-    <%= f.text_field :balance %>
+    <%= f.hidden_field :balance, value: 0 %>
   </div>
   <div class="field">
-    <%= f.label :minimum_payment %><br>
-    <%= f.text_field :minimum_payment %>
+    <%= f.hidden_field :minimum_payment, value: 0 %>
   </div>
   <div class="field">
     <%= f.label :credit_limit %><br>

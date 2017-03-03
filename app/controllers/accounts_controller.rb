@@ -6,7 +6,9 @@ class AccountsController < ApplicationController
   # GET /accounts.json
   def index
     @accounts = Account.all
+    @accounts = @accounts.paginate(:page => params[:page], :per_page => 10)
     @related_accounts = RelatedAccount.all
+    @related_accounts = @related_accounts.paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /accounts/1

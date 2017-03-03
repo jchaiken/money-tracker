@@ -3,31 +3,15 @@
   <table class="table">
     <% @notes.each do |transaction| %>
       <tr>
-        <% if transaction.transaction_date.present? %>
-          <td><%= transaction.transaction_date.strftime("%m-%d-%Y") %></td>
-        <% else %>
-        <td><%= transaction.created_at.strftime("%m-%d-%Y") %></td>
-        <% end %>
+        <td><%= transaction.transaction_date.strftime("%m-%d-%Y") %></td>
         <td><%= transaction.explanation %></td>
-        <td><%= link_to "#{number_to_currency(transaction.amount)}", transaction %></td>
+        <%# if transaction.transaction_type == "Debit" %>
+          <!--<td><%#= link_to "-#{number_to_currency(transaction.amount)}", transaction %></td>-->
+        <%# else %>
+          <td><%= link_to "#{number_to_currency(transaction.amount)}", transaction %></td>
+        <%# end %>
       </tr>
     <% end %>
   </table>
 </div>
 <%= will_paginate @notes %> <br>
-
-
-  <!--<table>-->
-    <!--  <thead>-->
-    <!--    <tr>-->
-    <!--      <th>Transaction date</th>-->
-    <!--      <th>Explanation</th>-->
-    <!--      <th>Amount</th>-->
-    <!--      <th colspan="3"></th>-->
-    <!--    </tr>-->
-    <!--  </thead>-->
-    <!--</table>-->
-    
-    <!--<td><%#= link_to 'Show', transaction %></td>-->
-              <!--<td><%#= link_to 'Edit', edit_transaction_path(transaction) %></td>-->
-              <!--<td><%#= link_to 'Destroy', transaction, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->

@@ -26,8 +26,6 @@ class Note < ActiveRecord::Base
     
     end
     
-    
-    
     def add_to_account_balance
       # add note amount to account balance and change due date if paying bill
       self.account.balance += self.amount

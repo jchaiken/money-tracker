@@ -4,10 +4,10 @@
       <%= render partial: "navigation" %><br><br>
       <div class="col-md-6 col-md-offset-3">
         <% if logged_in? %>
-        <a href="<%= cash_accounts_path %>" class="button-list" role="button">Cash on Hand<br>Balance: $<%= @cash_accounts.sum(:balance) %></a>
-        <a href="<%= bank_accounts_path %>" class="button-list" role="button">Bank Account<br>Balance: $<%= @bank_accounts.sum(:balance) %></a>
-        <a href="<%= bills_path %>" class="button-list" role="button">Bills due this month<br>Total: $<%= @bills.sum(:balance).abs %></a>
-        <a href="<%= credit_cards_path %>" class="button-list" role="button">Credit Card Debt<br>Total: $<%= @credit_cards.sum(:balance).abs %></a>
+        <a href="<%= cash_accounts_path %>" class="button-list" role="button">Cash on Hand<br>Balance: <%= number_to_currency(@cash_accounts) %></a>
+        <a href="<%= bank_accounts_path %>" class="button-list" role="button">Bank Account<br>Balance: <%= number_to_currency(@bank_accounts) %></a>
+        <a href="<%= bills_path %>" class="button-list" role="button">Bills due this month<br>Total: <%= number_to_currency(@bills_due) %></a>
+        <a href="<%= credit_cards_path %>" class="button-list" role="button">Credit Card Debt<br>Total: <%= number_to_currency(@credit_cards.abs) %></a>
         <a href="<%= new_account_path %>" class="btn btn-info btn-md btn-block" role="button">New Account</a>
         <a href="<%= accounts_path %>" class="btn btn-success btn-md btn-block" role="button">All Accounts</a>
         <% else %>

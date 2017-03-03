@@ -7,7 +7,7 @@
         <%= link_to 'Back to Accounts', root_path %> |
         <%= link_to 'New Account', new_account_path %>
         <% @bills.each do |account| %>
-          <% if account.due_date <= Date.today.end_of_month %>
+          <% if account.due_date <= Date.today.end_of_month && account.due_date >= Date.today.beginning_of_month %>
             <a href="<%= account_path(account) %>" class="button-list" role="button">
               <%= "#{account.name}" %><br>
               <%= "#{number_to_currency(account.balance.abs)}" %>
