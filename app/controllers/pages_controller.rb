@@ -14,6 +14,6 @@ class PagesController < ApplicationController
     end
   
     def due_this_month
-      Account.where({ due_date: Date.today.beginning_of_month..Date.today.end_of_month, account_type: ["Bill", "Credit Card"] }).sum(:minimum_payment)
+      Account.where({ due_date: Date.today.beginning_of_month...Date.today.end_of_month, account_type: ["Bill", "Credit Card"] }).sum(:minimum_payment)
     end
 end

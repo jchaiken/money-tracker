@@ -2,6 +2,10 @@ class Category < ActiveRecord::Base
   has_many :notes
   validates :name, presence: true, uniqueness: true
   
+  def totals
+    self.notes.where('transaction_type = ?', "Debit").sum(:amount)
+  end
+  
   # def this_months_totals
   #   # iterate through each category
   #   self.each do |c|

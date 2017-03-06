@@ -3,7 +3,7 @@
     <div class="row">
       <%= render partial: "pages/navigation" %><br><br>
       <p id="notice"><%= notice %></p>
-      <div class="col-md-4 col-md-offset-2">
+      <div class="col-md-5 col-md-offset-4">
         <%= link_to 'New Account', new_account_path %> | 
         <%= link_to 'Home', root_path %>
         <div class="button-list">
@@ -51,29 +51,29 @@
         </div>
         <%= will_paginate @accounts %>
       </div>
-      <div class="col-md-4"><br>
-        <div class="button-list">
-          <h1>Related Accounts</h1><br>
-          <table>
-            <thead>
-              <tr>
-                <th>Balance</th>
-                <th>Name</th>
-              </tr>
-            </thead>
+      <!--<div class="col-md-4"><br>-->
+      <!--  <div class="button-list">-->
+      <!--    <h1>Related Accounts</h1><br>-->
+      <!--    <table>-->
+      <!--      <thead>-->
+      <!--        <tr>-->
+      <!--          <th>Balance</th>-->
+      <!--          <th>Name</th>-->
+      <!--        </tr>-->
+      <!--      </thead>-->
           
-            <tbody>
-              <% @related_accounts.each do |account| %>
-                <tr>
-                  <td style="text-align:left"><%= number_to_currency(account.balance.abs) %></td>
-                  <td><%= account.name %></td>
-                </tr>
-              <% end %>
-            </tbody>
-          </table>
-        </div>
-        <%= will_paginate @related_accounts %>
-      </div>
+      <!--      <tbody>-->
+      <!--        <%# @related_accounts.each do |account| %>-->
+      <!--          <tr>-->
+      <!--            <td style="text-align:left"><%#= number_to_currency(account.balance.abs) %></td>-->
+      <!--            <td><%#= account.name %></td>-->
+      <!--          </tr>-->
+      <!--        <%# end %>-->
+      <!--      </tbody>-->
+      <!--    </table>-->
+      <!--  </div>-->
+      <!--  <%#= will_paginate @related_accounts %>-->
+      <!--</div>-->
     </div>
   </div>
 </div>

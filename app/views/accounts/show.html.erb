@@ -11,7 +11,7 @@
           <% if @account.account_type == "Credit Card" %>
             <%= "Current Balance: #{number_to_currency(@account.balance)}" %><br>
             <%= "Credit Limit: #{number_to_currency(@account.credit_limit)}" %><br>
-            <%= "APR: #{number_to_percentage(@account.apr, precision: 2)}" %>
+            <%= "Balance/Limit Ratio: #{number_to_percentage(@account.credit_ratio.abs, precision: 2)}" %>
           <% end %>
         </h3>
       <% end %><br>

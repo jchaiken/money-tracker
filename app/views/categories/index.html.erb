@@ -19,7 +19,7 @@
             <% @categories.each do |category| %>
               <tr>
                 <td><%= link_to "#{category.name}", category %></td>
-                <td></td>
+                <td><%= "#{number_to_currency(category.totals)}" %></td>
               </tr>
             <% end %>
           </tbody>
