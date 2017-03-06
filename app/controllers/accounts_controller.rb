@@ -14,8 +14,8 @@ class AccountsController < ApplicationController
   # GET /accounts/1
   # GET /accounts/1.json
   def show
-    @related_account = RelatedAccount.find(@account.id)
-    @notes = @account.notes + @related_account.notes
+    #@related_account = RelatedAccount.find(@account.id)
+    @notes = @account.notes
     @notes = @notes.paginate(:page => params[:page], :per_page => 10)
   end
 

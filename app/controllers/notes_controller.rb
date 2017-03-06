@@ -30,7 +30,13 @@ class NotesController < ApplicationController
     @note = Note.create(note_params)
     @account = Account.find(@note.account_id)
     if @note.related_account_id.present?
-      @related_account = RelatedAccount.find(@note.related_account_id)
+      @related_account = Account.find(@note.related_account_id)
+      # create related note by cloning info
+      @related_note = Note.create(note_params)
+      # update new note with opposite transaction type and account/related account ids
+      @related_note.update_note
+      @related_note.process_transaction
+      
     end
     @note.process_transaction
     respond_to do |format|

@@ -37,7 +37,7 @@
   
   <div class="field">
       <%= f.label :related_account_id %><br>
-      <%= f.select(:related_account_id, RelatedAccount.all.collect {|a| [ a.name, a.id ] }, {include_blank: '-- Select One --'}, class: "my-selector") %>
+      <%= f.select(:related_account_id, Account.all.collect {|a| [ a.name, a.id ] }, {include_blank: '-- Select One --'}, class: "my-selector") %>
     </div>
   
   <div class="actions">
