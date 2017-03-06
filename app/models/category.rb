@@ -18,7 +18,7 @@ class Category < ActiveRecord::Base
     
    
     
-  end
+  #end
   
   def last_90_days
     
