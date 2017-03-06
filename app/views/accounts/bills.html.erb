@@ -10,7 +10,7 @@
           <% if account.due_date <= Date.today.end_of_month && account.due_date >= Date.today.beginning_of_month %>
             <a href="<%= account_path(account) %>" class="button-list" role="button">
               <%= "#{account.name}" %><br>
-              <%= "#{number_to_currency(account.balance.abs)}" %>
+              <%= "#{number_to_currency(account.minimum_payment.abs)}" %>
             </a>
           <% end %>
         <% end %>
