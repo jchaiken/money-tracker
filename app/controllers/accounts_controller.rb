@@ -85,6 +85,7 @@ class AccountsController < ApplicationController
   def credit_cards
     @accounts = Account.all
     @credit_cards = @accounts.credit_card
+    @total = Account.total_balance
   end
   
   def bills

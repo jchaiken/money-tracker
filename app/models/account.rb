@@ -1,5 +1,6 @@
 class Account < ActiveRecord::Base
   has_many :notes
+  has_many :categories, through: :notes
   has_one :related_account
   scope :cash, -> {where(account_type: 'Cash')}
   scope :bank, -> {where(account_type: 'Bank')}
@@ -24,6 +25,19 @@ class Account < ActiveRecord::Base
         balance/credit_limit*100
       end
     end
+  end
+  
+  def total_balance
+    self.where('account_type = ? AND balance = ?', "Credit Card", true).sum(:balance)
+    #sum(:balance) if balance.present? && account_type == "Credit Card"
+  end
+  
+  def total_limit
+    sum(:credit_limit) if credit_limit.present? && account_type == "Credit Card"
+  end
+  
+  def total_ratio
+    self.total_balance/self.total_limit*100 unless self.total_limit == 0
   end
   
 end
