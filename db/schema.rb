@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,6 +11,9 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 20170228162656) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name"
@@ -41,11 +43,10 @@ ActiveRecord::Schema.define(version: 20170228162656) do
     t.integer  "account_id"
     t.integer  "related_account_id"
     t.integer  "category_id"
+    t.index ["account_id"], name: "index_notes_on_account_id", using: :btree
+    t.index ["category_id"], name: "index_notes_on_category_id", using: :btree
+    t.index ["related_account_id"], name: "index_notes_on_related_account_id", using: :btree
   end
-
-  add_index "notes", ["account_id"], name: "index_notes_on_account_id"
-  add_index "notes", ["category_id"], name: "index_notes_on_category_id"
-  add_index "notes", ["related_account_id"], name: "index_notes_on_related_account_id"
 
   create_table "related_accounts", force: :cascade do |t|
     t.string   "name"
@@ -58,9 +59,8 @@ ActiveRecord::Schema.define(version: 20170228162656) do
     t.decimal  "apr"
     t.decimal  "credit_limit"
     t.decimal  "minimum_payment"
+    t.index ["account_id"], name: "index_related_accounts_on_account_id", using: :btree
   end
-
-  add_index "related_accounts", ["account_id"], name: "index_related_accounts_on_account_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
@@ -68,8 +68,7 @@ ActiveRecord::Schema.define(version: 20170228162656) do
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
 
 end

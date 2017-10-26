@@ -9,7 +9,7 @@ class Account < ActiveRecord::Base
   validates :name, presence: true, uniqueness: true
   validates :balance, presence: true
   validates :account_type, presence: true
-  validates :due_date, presence: true
+  validates :due_date, presence: true unless Proc.new { |account| account.account_type == "Bank" }
   
   def bills_due_total
     self.where(:due_date => (Date.today.beginning_of_month + 1...Date.today.end_of_month)).sum(:minimum_payment)

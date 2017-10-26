@@ -1,0 +1,134 @@
+/* line 1, /home/ubuntu/workspace/app/assets/stylesheets/custom.css.scss */
+h1 {
+  text-align: center;
+}
+
+/* line 5, /home/ubuntu/workspace/app/assets/stylesheets/custom.css.scss */
+a {
+  background-color: none;
+  color: blue;
+  text-decoration: none;
+}
+
+/* line 11, /home/ubuntu/workspace/app/assets/stylesheets/custom.css.scss */
+input[type=text] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+/* line 18, /home/ubuntu/workspace/app/assets/stylesheets/custom.css.scss */
+input[type=text]:focus {
+  border: 3px solid #555;
+}
+
+/* line 32, /home/ubuntu/workspace/app/assets/stylesheets/custom.css.scss */
+.my-selector {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+/* line 39, /home/ubuntu/workspace/app/assets/stylesheets/custom.css.scss */
+a.button-list {
+  background-color: #e7e7e7;
+  color: black;
+  font-size: 20px;
+  border-radius: 6px;
+  border: 2px solid #008CBA;
+  width: 100%;
+  display: block;
+  text-decoration: none;
+  padding: 32px 16px;
+  text-align: center;
+  -webkit-transition-duration: 0.4s;
+  /* Safari */
+  transition-duration: 0.4s;
+}
+
+/* line 54, /home/ubuntu/workspace/app/assets/stylesheets/custom.css.scss */
+a.button-list:hover {
+  background-color: #008CBA;
+  /* Blue */
+  color: white;
+}
+
+/* line 59, /home/ubuntu/workspace/app/assets/stylesheets/custom.css.scss */
+div.button-list {
+  background-color: #e7e7e7;
+  color: black;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 2px solid #008CBA;
+  width: 100%;
+  display: block;
+  text-decoration: none;
+  padding: 20px 16px;
+  text-align: left;
+  -webkit-transition-duration: 0.4s;
+  /* Safari */
+  transition-duration: 0.4s;
+}
+
+/* line 74, /home/ubuntu/workspace/app/assets/stylesheets/custom.css.scss */
+.datetime select:nth-child(1) {
+  width: 28%;
+  text-indent: 15px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+/* line 82, /home/ubuntu/workspace/app/assets/stylesheets/custom.css.scss */
+.datetime select:nth-child(2) {
+  width: 42%;
+  text-indent: 5px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+/* line 90, /home/ubuntu/workspace/app/assets/stylesheets/custom.css.scss */
+.datetime select:nth-child(3) {
+  width: 28%;
+  text-indent: 15px;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+/* line 143, /home/ubuntu/workspace/app/assets/stylesheets/custom.css.scss */
+.form {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}
+
+/* line 150, /home/ubuntu/workspace/app/assets/stylesheets/custom.css.scss */
+img {
+  display: block;
+  padding: 8px 16px;
+  margin: auto;
+  width: 100%;
+}
+
+/* miscellaneous */
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ */
+

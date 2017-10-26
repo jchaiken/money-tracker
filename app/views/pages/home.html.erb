@@ -1,7 +1,8 @@
-<div class="page-content">
-  <div class="page-content-col">
-    <div class="row">
-      <%= render partial: "navigation" %><br><br>
+<%= render partial: "navigation" %>
+<div class="container-fluid">
+  <!--<div class="page-content-col">-->
+  <!--  <div class="row">-->
+      
       <div class="col-md-6 col-md-offset-3">
         <% if logged_in? %>
         <a href="<%= cash_accounts_path %>" class="button-list" role="button">Cash on Hand<br>Balance: <%= number_to_currency(@cash_accounts) %></a>
@@ -14,6 +15,6 @@
           <%= render template: "/sessions/new" %>
         <% end %>
       </div>
-    </div>
-  </div>
+  <!--  </div>-->
+  <!--</div>-->
 </div>
