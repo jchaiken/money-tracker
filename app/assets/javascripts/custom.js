@@ -9,7 +9,7 @@ $(document).on('turbolinks:load', function() {
   // $("#credit_limit").hide();
   // $("#due_date").hide();
   // $("#balance").hide();
-  $("#new_account_type").change(function(){
+  $("#account_type").change(function(){
     var type = $(this).find("option:selected").attr('id');
     // window.alert("Account type is: " + type + "!");
     

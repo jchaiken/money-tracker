@@ -1,1 +1,0 @@
-json.partial! "related_accounts/related_account", related_account: @related_account

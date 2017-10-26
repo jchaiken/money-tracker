@@ -2,13 +2,12 @@
   <%= render 'shared/error_messages', object: f.object %>
   
   <div class="form-group">
-    <!--<label for="name">Name:</label>-->
+    <label class="control-label sr-only" for="name">Name:</label>
     <input type="text" name="account[name]" id="name" placeholder="Account Name" class="form-control">
-    <%#= f.label :name %>
-    <%#= f.text_field :name %>
   </div>
   <div class="form-group">
-    <select type="text" name="account[account_type]" id="new_account_type" placeholder="Account Type" class="form-control" style="color:#A69999">
+    <label class="control-label sr-only" for="account_type">Account Type:</label>
+    <select type="text" name="account[account_type]" id="account_type" placeholder="Account Type" class="form-control" style="color:#A69999">
       <option>Account Type</option>
       <option value="Bank" id="bank">Bank</option>
       <option value="Cash" id="cash">Cash</option>
@@ -17,27 +16,23 @@
     </select>
   </div>
   <div class="form-group">
+    <label class="control-label sr-only" for="balance">Balance:</label>
     <input type="text" name="account[balance]" id="balance" placeholder="Balance" class="form-control">
-    <%#= f.hidden_field :balance, value: 0, class: "form-control" %>
   </div>
   <div class="form-group">
+    <label class="control-label sr-only" for="minimum_payment">Minimum Payment:</label>
     <input type="text" name="account[minimum_payment]" id="minimum_payment" placeholder="Minimum Payment" class="form-control">
-    <%#= f.hidden_field :minimum_payment, value: 0, class: "form-control" %>
   </div>
   <div class="form-group">
+    <label class="control-label sr-only" for="credit_limit">Credit Limit:</label>
     <input type="text" name="account[credit_limit]" id="credit_limit" placeholder="Credit Limit" class="form-control">
-    <%#= f.label :credit_limit %>
-    <%#= f.text_field :credit_limit %>
   </div>
   <div class="form-group">
-    <!--<label for="due_date">Due Date:</label>-->
+    <label class="control-label sr-only" for="due_date">Due Date:</label>
     <div class="input-group" id="due_date">
-    <span class="input-group-addon">Due Date: </span>
-    <input type="date" name="account[due_date]" id="due_date" class="form-control">
+      <span class="input-group-addon">Due Date: </span>
+      <input type="date" name="account[due_date]" id="due_date" class="form-control">
     </div>
-    <!--<span id="date_label" class="help-block">Due Date</span>-->
-    <%#= f.label :due_date %>
-    <!--<span class="datetime"><%#= f.date_select :due_date, :default => Date.today, :order => [:day, :month, :year], :start_year => 2017, :end_year => 2022 %></span>-->
   </div>
   <div class="actions">
     <%= f.submit "Create Account", class: "btn btn-primary" %>

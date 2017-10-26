@@ -1,1 +1,0 @@
-json.array! @related_accounts, partial: 'related_accounts/related_account', as: :related_account
