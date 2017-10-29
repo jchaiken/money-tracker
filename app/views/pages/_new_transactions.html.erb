@@ -1,0 +1,78 @@
+<!--<div class="col-md-3">-->
+<!--<div class="btn-group-vertical" role="group" id="trans_options">-->
+<!--  <button type="button" class="btn btn-default">1</button>-->
+<!--  <button type="button" class="btn btn-default">2</button>-->
+<!--</div>-->
+<!--</div>-->
+
+<!--<div class=".ui-widget-content">-->
+<!--<div class="transactionOptions">-->
+
+<div class="ui-corner-all" id="transactionOptions">
+  
+  <h3>Enter Cash Receipt</h3>
+  <div>
+      <p>Cash account to use</p>
+  </div>
+  
+  <h3>Enter CC Receipt</h3>
+  <div>
+      <p>CC account to use</p>
+  </div>
+  
+  <h3>Pay Bill</h3>
+  <div>
+      <p>Bill to pay</p>
+  </div>
+  
+  <h3>Bank Withdrawal</h3>
+  <div>
+      <p>bank to withdraw from</p>
+  </div>
+  <h3>Bank Deposit</h3>
+  <div>
+      <p>bank to deposit to</p>
+  </div>
+  
+  <h3>see recent transactions</h3>
+  <div id="transactionTable">
+        <h2>All Transactions</h2>
+        <!--<div class="button-list">-->
+          <table id="myTable">
+            <thead>
+              <tr>
+                <th>Transaction date</th>
+                <th>Explanation</th>
+                <th>Amount</th>
+              </tr>
+            </thead>
+            
+            <tbody>
+              <% @notes.each do |transaction| %>
+                <tr>
+                  <td><%= transaction.transaction_date.strftime("%m-%d-%Y") %></td>
+                  <!--<td><%= transaction.account.name %></td>-->
+                  <td><%= transaction.explanation %></td>
+                  <% if transaction.transaction_type == "Debit" %>
+                    <td><%= link_to "- (#{number_to_currency(transaction.amount)})", transaction %></td>
+                  <% else %>
+                    <td><%= link_to "+ #{number_to_currency(transaction.amount)}", transaction %></td>
+                  <% end %>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <!--</div>-->
+        
+      </div>
+<!--</div>-->
+
+
+<!--<ul class="nav nav-pills nav-stacked" id="trans_options">-->
+<!--  <li role="presentation" class="active"><a href="#">Home</a></li>-->
+<!--  <li role="presentation"><a href="#">Profile</a></li>-->
+<!--  <li role="presentation"><a href="#">Messages</a></li>-->
+<!--</ul>-->
+<!--</div>-->
+</div><br>
+<!-- <a href="<%#= cash_accounts_path %>" class="button-list" role="button">Cash on Hand<br>Balance: <%#= number_to_currency(@cash_accounts) %></a> -->

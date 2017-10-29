@@ -1,5 +1,5 @@
 /* line 1, /home/ubuntu/workspace/app/assets/stylesheets/custom.css.scss */
-h1 {
+h1, h2, h3 {
   text-align: center;
 }
 
@@ -38,7 +38,7 @@ a.button-list {
   font-size: 20px;
   border-radius: 6px;
   border: 2px solid #008CBA;
-  width: 100%;
+  width: auto;
   display: block;
   text-decoration: none;
   padding: 32px 16px;
@@ -57,6 +57,7 @@ a.button-list:hover {
 
 /* line 59, /home/ubuntu/workspace/app/assets/stylesheets/custom.css.scss */
 div.button-list {
+  position: relative;
   background-color: #e7e7e7;
   color: black;
   font-size: 16px;
@@ -72,7 +73,7 @@ div.button-list {
   transition-duration: 0.4s;
 }
 
-/* line 74, /home/ubuntu/workspace/app/assets/stylesheets/custom.css.scss */
+/* line 75, /home/ubuntu/workspace/app/assets/stylesheets/custom.css.scss */
 .datetime select:nth-child(1) {
   width: 28%;
   text-indent: 15px;
@@ -81,7 +82,7 @@ div.button-list {
   box-sizing: border-box;
 }
 
-/* line 82, /home/ubuntu/workspace/app/assets/stylesheets/custom.css.scss */
+/* line 83, /home/ubuntu/workspace/app/assets/stylesheets/custom.css.scss */
 .datetime select:nth-child(2) {
   width: 42%;
   text-indent: 5px;
@@ -90,7 +91,7 @@ div.button-list {
   box-sizing: border-box;
 }
 
-/* line 90, /home/ubuntu/workspace/app/assets/stylesheets/custom.css.scss */
+/* line 91, /home/ubuntu/workspace/app/assets/stylesheets/custom.css.scss */
 .datetime select:nth-child(3) {
   width: 28%;
   text-indent: 15px;
@@ -99,7 +100,7 @@ div.button-list {
   box-sizing: border-box;
 }
 
-/* line 143, /home/ubuntu/workspace/app/assets/stylesheets/custom.css.scss */
+/* line 144, /home/ubuntu/workspace/app/assets/stylesheets/custom.css.scss */
 .form {
   width: 100%;
   padding: 12px 20px;
@@ -107,7 +108,7 @@ div.button-list {
   box-sizing: border-box;
 }
 
-/* line 150, /home/ubuntu/workspace/app/assets/stylesheets/custom.css.scss */
+/* line 151, /home/ubuntu/workspace/app/assets/stylesheets/custom.css.scss */
 img {
   display: block;
   padding: 8px 16px;
@@ -115,7 +116,10 @@ img {
   width: 100%;
 }
 
-/* miscellaneous */
+/* line 158, /home/ubuntu/workspace/app/assets/stylesheets/custom.css.scss */
+#trans_options {
+  position: relative;
+}
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.

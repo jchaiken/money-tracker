@@ -1,46 +1,66 @@
 <%= form_for(@note) do |f| %>
-  <% if @note.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@note.errors.count, "error") %> prohibited this transaction from being saved:</h2>
-
-      <ul>
-      <% @note.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+  <%= render 'shared/error_messages', object: f.object %>
+  
+  <div class="form-group">
+    <label class="control-label sr-only" for="explanation">Explanation:</label>
+    <input type="text" name="note[explanation]" id="explanation" placeholder="Explanation" class="form-control" required="true">
+  </div>
+  
+  <div class="form-group">
+    <label class="control-label sr-only" for="amount">Amount:</label>
+    <input type="text" name="note[amount]" id="amount" placeholder="Amount" class="form-control" required="true">
+  </div>
+  
+  <div class="form-group">
+    <label class="control-label sr-only" for="category">Category:</label>
+    <select type="text" name="note[category]" id="category" class="form-control" style="color:#A69999">
+      <option>Category</option>
+      <% @categories.each do |category| %>
+        <option value="<%= category.id %>"><%= category.name %></option>
       <% end %>
-      </ul>
+    </select>
+  </div>
+  
+  <% if @transaction_type.present? %>
+    <div class="form-group">
+      <%= f.hidden_field :transaction_type, value: @transaction_type %>
+    </div>
+  <% else %>
+    <div class="form-group">
+      <label class="control-label sr-only" for="transaction_type">Transaction Type:</label>
+      <select type="text" name="note[transaction_type]" id="transaction_type" class="form-control" style="color:#A69999" required="true">
+        <option value="" id="option-title">Transaction Type</option>
+        <option value="Credit" id="credit">Credit</option>
+        <option value="Debit" id="debit">Debit</option>
+      </select>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :explanation %><br>
-    <%= f.text_field :explanation %>
+    
+  
+  <div class="form-group">
+    <!--<label class="control-label sr-only" for="due_date">Due Date:</label>-->
+    <!--<input type="text" name="account[due_date]" id="due_date" placeholder="Due Date" class="form-control">-->
+    
+    <label class="control-label sr-only" for="transaction_date">Transaction Date:</label>
+    <input type="text" name="note[transaction_date]" id="transaction_date" placeholder="Transaction Date" defaultValue="<%= Date.today %>" class="form-control">
+    
   </div>
-  <div class="field">
-    <%= f.label :amount %><br>
-    <%= f.text_field :amount %>
-  </div>
-  <div class="field">
-    <%= f.label :category_id %><br>
-    <%= f.select(:category_id, Category.all.collect {|c| [ c.name, c.id ] }, {include_blank: '-- Select One --'}, class: "my-selector") %>
-  </div>
-  <div class="field">
-    <%= f.label :transaction_type %><br>
-    <%= f.select("transaction_type", ["Credit", "Debit"], {include_blank: '-- Select One --'}, required: true, class: "my-selector") %>
-  </div>
-  <div class="field">
-    <%= f.label :transaction_date %><br>
-    <span class="datetime"><%= f.date_select :transaction_date, :default => Date.today, :order => [:day, :month, :year], :start_year => 2017, :end_year => 2022 %></span>
-  </div>
-  <div class="field">
+  
+  <div class="form-group">
     <%= f.hidden_field :account_id, value: @account.id %>
   </div>
   
-  <div class="field">
-      <%= f.label :related_account_id %><br>
-      <%= f.select(:related_account_id, Account.all.collect {|a| [ a.name, a.id ] }, {include_blank: '-- Select One --'}, class: "my-selector") %>
-    </div>
+  <div class="form-group">
+    <label class="control-label sr-only" for="category">Related Account:</label>
+    <select type="text" name="note[related_account_id]" id="related_account" class="form-control" style="color:#A69999">
+      <option value="">Related Account</option>
+      <% @related_accounts.each do |account| %>
+        <option value="<%= account.id %>"><%= account.name %></option>
+      <% end %>
+    </select>
+  </div>
   
   <div class="actions">
-    <%= f.submit "Create Transaction" %>
+    <%= f.submit "Create Transaction", class: "btn btn-primary" %>
   </div>
 <% end %>

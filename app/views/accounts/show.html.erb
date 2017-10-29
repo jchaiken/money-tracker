@@ -1,35 +1,33 @@
-<div class="page-content">
-  <div class="page-content-col">
-    <div class="row">
-      <%= render partial: "pages/navigation" %>
-      
-      <% if @account.account_type == "Cash" || @account.account_type == "Bank" %>
-        <h3><%= "#{@account.name}   Balance: #{number_to_currency(@account.balance)}" %></h3>
-      <% elsif @account.account_type == "Credit Card" || @account.account_type == "Bill"  %>
-        <h3><%= "#{@account.name}   Minimum Payment: #{number_to_currency(@account.minimum_payment)}" %><br>
-            <%= "Due Date: #{@account.due_date.strftime("%m-%d-%Y")}" %><br>
-          <% if @account.account_type == "Credit Card" %>
-            <%= "Current Balance: #{number_to_currency(@account.balance)}" %><br>
-            <%= "Credit Limit: #{number_to_currency(@account.credit_limit)}" %><br>
-            <%= "Balance/Limit Ratio: #{number_to_percentage(@account.credit_ratio.abs, precision: 2)}" %>
-          <% end %>
-        </h3>
-      <% end %><br>
-      <div class="col-md-6 col-md-offset-3">
-        <p id="notice"><%= notice %></p>
-        <%= link_to 'New Transaction', new_account_note_path(@account) %> |
-        <%= link_to 'Edit Account', edit_account_path(@account) %> |
-        <% if @account.account_type == "Cash" %>
-          <%= link_to 'Back to Cash Accounts', cash_accounts_path %>
-        <% elsif @account.account_type == "Bank" %>
-          <%= link_to 'Back to Bank Accounts', bank_accounts_path %>
-        <% elsif @account.account_type == "Credit Card" %>
-          <%= link_to 'Back to Credit Cards', credit_cards_path %>
-        <% else %>
-          <%= link_to 'Back to Bills', bills_path %>
-        <% end %>
-        <%= render template: "notes/account_transactions" %>
-      </div>
-    </div>
+<%= render partial: "pages/navigation" %>
+<div class="container-fluid">
+  <%= render 'shared/flash_messages' %>
+  <% if @account.account_type == "Cash" || @account.account_type == "Bank" %>
+    <h2><%= "#{@account.name}" %></h2>
+    <h3><%= "Balance: #{number_to_currency(@account.balance)}" %></h3>
+  <% elsif @account.account_type == "Credit" || @account.account_type == "Bill"  %>
+    <h2><%= "#{@account.name}" %></h2>
+    <h3><%= "Minimum Payment: #{number_to_currency(@account.minimum_payment)}" %><br>
+        <%= "Due Date: #{@account.due_date.strftime("%m-%d-%Y")}" %><br>
+      <% if @account.account_type == "Credit" %>
+        <%= "Current Balance: #{number_to_currency(@account.balance)}" %><br>
+        <%= "Credit Limit: #{number_to_currency(@account.credit_limit)}" %><br>
+        <%= "Balance/Limit Ratio: #{number_to_percentage(@account.credit_ratio.abs, precision: 2)}" %>
+      <% end %>
+    </h3>
+  <% end %><br>
+  <div class="col-md-6 col-md-offset-3">
+    <p id="notice"><%= notice %></p>
+    <%= link_to 'New Transaction', new_account_note_path(@account) %> |
+    <%= link_to 'Edit Account', edit_account_path(@account) %> |
+    <% if @account.account_type == "Cash" %>
+      <%= link_to 'Back to Cash Accounts', cash_accounts_path %>
+    <% elsif @account.account_type == "Bank" %>
+      <%= link_to 'Back to Bank Accounts', bank_accounts_path %>
+    <% elsif @account.account_type == "Credit" %>
+      <%= link_to 'Back to Credit Cards/Loans', credit_cards_path %>
+    <% else %>
+      <%= link_to 'Back to Bills', bills_path %>
+    <% end %>
+    <%= render template: "notes/account_transactions" %>
   </div>
 </div>

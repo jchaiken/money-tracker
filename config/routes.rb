@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :related_accounts
   resources :accounts
+  # update notes routes so url shows transactions instead of notes
   resources :notes
   get 'pages/home'
 
@@ -22,6 +23,7 @@ Rails.application.routes.draw do
   get '/bank_accounts' => 'accounts#bank_accounts'
   get '/credit_cards' => 'accounts#credit_cards'
   get '/bills' => 'accounts#bills'
+  get '/loans' => 'accounts#loans'
   
   #get  '/signup' => 'users#new'
   get    '/login' => 'sessions#new'

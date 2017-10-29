@@ -2,74 +2,53 @@ class AccountsController < ApplicationController
   before_action :require_login
   before_action :set_account, only: [:show, :edit, :update, :destroy]
   
-  # GET /accounts
-  # GET /accounts.json
   def index
     @accounts = Account.all
-    @accounts = @accounts.paginate(:page => params[:page], :per_page => 10)
-    @related_accounts = RelatedAccount.all
-    @related_accounts = @related_accounts.paginate(:page => params[:page], :per_page => 10)
   end
 
-  # GET /accounts/1
-  # GET /accounts/1.json
   def show
-    #@related_account = RelatedAccount.find(@account.id)
     @notes = @account.notes
     @notes = @notes.paginate(:page => params[:page], :per_page => 10)
   end
 
-  # GET /accounts/new
   def new
     @account = Account.new
-    @related_account = RelatedAccount.new
   end
 
-  # GET /accounts/1/edit
   def edit
   end
 
-  # POST /accounts
-  # POST /accounts.json
   def create
     @account = Account.new(account_params)
-    @related_account = RelatedAccount.new(account_params)
-    respond_to do |format|
-      if @account.save && @related_account.save
-        format.html { redirect_to @account, notice: 'Account was successfully created.' }
-        format.json { render :show, status: :created, location: @account }
-      else
-        format.html { render :new }
-        format.json { render json: @account.errors, status: :unprocessable_entity }
-      end
+    
+    if @account.save
+      flash[:success] = "Account has been created."
+      redirect_to account_path(@account)
+    else
+      # style these messages --> need option for no errors: Something went wrong...
+      flash[:danger] = @account.errors.full_messages
+      puts @account.errors.full_messages
+      redirect_to request.referrer
     end
+    
   end
 
-  # PATCH/PUT /accounts/1
-  # PATCH/PUT /accounts/1.json
   def update
-    @related_account = RelatedAccount.find(@account.id)
-    respond_to do |format|
-      if @account.update(account_params) && @related_account.update(account_params)
-        format.html { redirect_to @account, notice: 'Account was successfully updated.' }
-        format.json { render :show, status: :ok, location: @account }
-      else
-        format.html { render :edit }
-        format.json { render json: @account.errors, status: :unprocessable_entity }
-      end
+    
+    if @account.update(account_params)
+      flash[:success] = "Account has been updated."
+      redirect_to account_path(@account)
+    else
+      flash[:success] = "Something went wrong. Please try again."
+      redirect_to request.referrer
     end
   end
 
-  # DELETE /accounts/1
-  # DELETE /accounts/1.json
   def destroy
-    @related_account = RelatedAccount.find(@account.id)
-    @related_account.destroy
     @account.destroy
-    respond_to do |format|
-      format.html { redirect_to accounts_url, notice: 'Account was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    
+    flash[:success] = "Account has been destroyed."
+    redirect_to accounts_path
   end
   
   def cash_accounts
@@ -84,13 +63,18 @@ class AccountsController < ApplicationController
   
   def credit_cards
     @accounts = Account.all
-    @credit_cards = @accounts.credit_card
-    @total = Account.total_balance
+    @credit_cards = @accounts.credit
+    # @total = Account.total_balance
   end
   
   def bills
     @accounts = Account.all
-    @bills = @accounts.bill + @accounts.credit_card
+    @bills = @accounts.bill + @accounts.credit + @accounts.loan
+  end
+  
+  def loans
+    @accounts = Account.all
+    @loans = @accounts.loan
   end
 
   private

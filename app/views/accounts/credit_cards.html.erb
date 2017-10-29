@@ -1,19 +1,16 @@
-<div class="page-content">
-  <div class="page-content-col">
-    <div class="row">
-      <%= render partial: "pages/navigation" %>
-      <h3>Credit Cards</h3>
-      <!--<h4><%#= "Total Ratio: #{@total}" %></h4>-->
-      <div class="col-md-6 col-md-offset-3"><br>
-        <%= link_to 'Back to Accounts', root_path %> |
-        <%= link_to 'New Account', new_account_path %>
-        <% @credit_cards.each do |account| %>
-          <a href="<%= account_path(account) %>" class="button-list" role="button">
-            <%= "#{account.name}" %><br>
-            <%= "Balance: #{number_to_currency(account.balance.abs)}" %>
-          </a>
-        <% end %>
-      </div>
-    </div>
+<%= render partial: "pages/navigation" %>
+<div class="container-fluid">
+  <%= render 'shared/flash_messages' %>
+  <h3>Credit Cards</h3>
+  <!--<h4><%#= "Total Ratio: #{@total}" %></h4>-->
+  <div class="col-md-6 col-md-offset-3"><br>
+    <%= link_to 'Back to Accounts', root_path %> |
+    <%= link_to 'New Account', new_account_path %>
+    <% @credit_cards.each do |account| %>
+      <a href="<%= account_path(account) %>" class="button-list" role="button">
+        <%= "#{account.name}" %><br>
+        <%= "Balance: #{number_to_currency(account.balance.abs)}" %>
+      </a>
+    <% end %>
   </div>
 </div>

@@ -1,21 +1,12 @@
 <%= form_for(@category) do |f| %>
-  <% if @category.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:</h2>
-
-      <ul>
-      <% @category.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <div class="field">
-    <%= f.label :name, 'Category Name' %><br>
-    <%= f.text_field :name %>
+  <%= render 'shared/error_messages', object: f.object %>
+  
+  <div class="form-group">
+    <label class="control-label sr-only" for="category_name">Category Name:</label>
+    <input type="text" name="category[name]" id="category_name" placeholder="Category Name" class="form-control" autofocus="true">
   </div>
-
+  
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Create Category", class: "btn btn-primary" %>
   </div>
 <% end %>

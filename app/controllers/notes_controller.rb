@@ -2,30 +2,29 @@ class NotesController < ApplicationController
   before_action :require_login
   before_action :set_note, only: [:show, :edit, :update, :destroy]
 
-  # GET /notes
-  # GET /notes.json
   def index
-    @notes = Note.paginate(:page => params[:page], :per_page => 10)
+    @notes = Note.all
+    @cash_accounts = Account.cash
+    @bank_accounts = Account.bank
+    @credit_cards = Account.credit
+    @bills = Account.bill
   end
 
-  # GET /notes/1
-  # GET /notes/1.json
   def show
   end
 
-  # GET /notes/new
   def new
     @account = Account.find(params[:account_id])
     @note = Note.new
+    @categories = Category.all
+    @related_accounts = Account.all
+    @transaction_type = params[:transaction_type] if params[:transaction_type].present?
   end
 
-  # GET /notes/1/edit
   def edit
     @account = @note.account
   end
 
-  # POST /notes
-  # POST /notes.json
   def create
     @note = Note.create(note_params)
     @account = Account.find(@note.account_id)
@@ -39,33 +38,31 @@ class NotesController < ApplicationController
       
     end
     @note.process_transaction
-    respond_to do |format|
-      if @note.save
-        format.html { redirect_to @note, notice: 'Note was successfully created.' }
-        format.json { render :show, status: :created, location: @note }
-      else
-        format.html { render :new }
-        format.json { render json: @note.errors, status: :unprocessable_entity }
-      end
+    
+    if @note.save
+      flash[:success] = "Transaction has been created."
+      redirect_to account_path(@account)
+    else
+      flash[:danger] = @note.errors.full_messages
+      puts @note.errors.full_messages
+      redirect_to request.referrer
     end
+    
   end
 
-  # PATCH/PUT /notes/1
-  # PATCH/PUT /notes/1.json
   def update
-    respond_to do |format|
-      if @note.update(note_params)
-        format.html { redirect_to @note, notice: 'Note was successfully updated.' }
-        format.json { render :show, status: :ok, location: @note }
-      else
-        format.html { render :edit }
-        format.json { render json: @note.errors, status: :unprocessable_entity }
-      end
+    
+    if @note.update(note_params)
+      flash[:success] = "Transaction has been updated."
+      redirect_to account_path(@account)
+    else
+      flash[:danger] = @note.errors.full_messages
+      puts @note.errors.full_messages
+      redirect_to request.referrer
     end
+    
   end
 
-  # DELETE /notes/1
-  # DELETE /notes/1.json
   def destroy
     @note.destroy
     respond_to do |format|
