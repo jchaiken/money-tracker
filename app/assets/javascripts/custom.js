@@ -53,7 +53,9 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
-  $("#due_date, #transaction_date").datepicker();
+  $("#due_date, #transaction_date, #my-date").datepicker({
+    dateFormat: "yy-mm-dd"
+  });
 });
 
 

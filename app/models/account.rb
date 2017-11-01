@@ -15,7 +15,7 @@ class Account < ActiveRecord::Base
   # require minimum payment unless it's a bank or cash account
   validates :minimum_payment, presence: true, unless: Proc.new { |account| account.account_type == "Bank"  || account.account_type == "Cash" }
   # require credit limit for credit accounts
-  validates :credit_limit, presence: true, if: Proc.new { |account| account.account_type == "Credit" }
+  validates :credit_limit, presence: true, if: Proc.new { |account| account.account_type == "Credit" || account.account_type == "Loan" }
   
   def bills_due_total
     self.where(:due_date => (Date.today.beginning_of_month + 1...Date.today.end_of_month)).sum(:minimum_payment)
@@ -27,7 +27,9 @@ class Account < ActiveRecord::Base
   
   def credit_ratio
     if credit_limit.present?
-      unless credit_limit == 0
+      if credit_limit == 0
+        0
+      else
         balance/credit_limit*100
       end
     end

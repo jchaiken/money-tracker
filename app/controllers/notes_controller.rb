@@ -7,7 +7,7 @@ class NotesController < ApplicationController
     @cash_accounts = Account.cash
     @bank_accounts = Account.bank
     @credit_cards = Account.credit
-    @bills = Account.bill
+    @bills = Account.bill + Account.loan + Account.credit
   end
 
   def show
@@ -23,6 +23,8 @@ class NotesController < ApplicationController
 
   def edit
     @account = @note.account
+    @categories = Category.all
+    @related_accounts = Account.all
   end
 
   def create

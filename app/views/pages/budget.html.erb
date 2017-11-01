@@ -1,0 +1,20 @@
+<%= render partial: "pages/navigation" %><br><br>
+<div class="container-fluid">
+  <div class="col-md-9 col-md-offset-1">
+    <%= render 'shared/flash_messages' %>
+    
+    <div class="button-list">
+      <h1>Budget</h1><br>
+      <!--<ul>-->
+        <% @categories.each do |category| %>
+        
+          <div id="budget-list"><%= category.name %> </div>
+          
+          <div id="budget-rate">% of budget used</div><br>
+        <% end %>
+      <!--</ul>-->
+      
+      
+    </div>
+  </div>
+</div>

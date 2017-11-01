@@ -1,6 +1,12 @@
 <%= render partial: "pages/navigation" %>
 <div class="container-fluid">
-  <h1><%= "#{@account.name}" %> Transaction (Current Balance: <%= "#{number_to_currency(@account.balance)}"  %>)</h1>
+  <% if @transaction_type.present? && @transaction_type == "Credit" %>
+    <h2>Record payment to <%= @account.name %></h2>
+  <% elsif @transaction_type.present? && @transaction_type == "Debit" %>
+    <h2>Record withdrawal from <%= "#{@account.name}" %> (Current Balance: <%= "#{number_to_currency(@account.balance)}"  %>)</h2>
+  <% else %>
+    <h2>Create a transaction for <%= @account.name %></h2>
+  <% end %>
   <div class="col-md-6 col-md-offset-3">
     <%= render 'shared/flash_messages' %>
     <%= render 'form' %>

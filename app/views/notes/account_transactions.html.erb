@@ -3,7 +3,7 @@
   <table class="table">
     <% @notes.each do |transaction| %>
       <tr>
-        <td><%= transaction.transaction_date.strftime("%m-%d-%Y") %></td>
+        <td><%#= transaction.transaction_date.strftime("%m-%d-%Y") %></td>
         <td><%= transaction.id%></td>
         <td><%= transaction.explanation %></td>
         <td><%= transaction.transaction_type %></td>

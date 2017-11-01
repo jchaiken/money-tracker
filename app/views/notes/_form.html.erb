@@ -13,7 +13,7 @@
   
   <div class="form-group">
     <label class="control-label sr-only" for="category">Category:</label>
-    <select type="text" name="note[category]" id="category" class="form-control" style="color:#A69999">
+    <select type="text" name="note[category_id]" id="category" class="form-control" style="color:#A69999">
       <option>Category</option>
       <% @categories.each do |category| %>
         <option value="<%= category.id %>"><%= category.name %></option>
@@ -38,18 +38,15 @@
     
   
   <div class="form-group">
-    <!--<label class="control-label sr-only" for="due_date">Due Date:</label>-->
-    <!--<input type="text" name="account[due_date]" id="due_date" placeholder="Due Date" class="form-control">-->
-    
     <label class="control-label sr-only" for="transaction_date">Transaction Date:</label>
     <input type="text" name="note[transaction_date]" id="transaction_date" placeholder="Transaction Date" defaultValue="<%= Date.today %>" class="form-control">
-    
   </div>
   
   <div class="form-group">
     <%= f.hidden_field :account_id, value: @account.id %>
   </div>
   
+  <% unless @transaction_type.present? && @transaction_type == "Debit" && @account.account_type == "Credit" %>
   <div class="form-group">
     <label class="control-label sr-only" for="category">Related Account:</label>
     <select type="text" name="note[related_account_id]" id="related_account" class="form-control" style="color:#A69999">
@@ -59,8 +56,9 @@
       <% end %>
     </select>
   </div>
+  <% end %>
   
   <div class="actions">
-    <%= f.submit "Create Transaction", class: "btn btn-primary" %>
+    <%= f.submit "Record Transaction", class: "btn btn-primary" %>
   </div>
 <% end %>

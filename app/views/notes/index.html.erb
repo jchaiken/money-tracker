@@ -1,81 +1,83 @@
 <%= render partial: "pages/navigation" %>
 <div class="container-fluid">
-  <%= render 'shared/flash_messages' %>
-  
-  <div class="ui-corner-all" id="transactionOptions">
-  
-    <h3> Cash Receipt</h3>
-    <div>
-      <ul>
-        <% @cash_accounts.each do |account| %>
-          <li id="option-list"><%= link_to "#{account.name}", new_account_note_path(:account_id => account.id, :transaction_type => "Debit") %></li>
-        <% end %>
-      </ul>
-    </div>
+  <div class="col-md-6 col-md-offset-3">
+    <%= render 'shared/flash_messages' %>
     
-    <h3> Credit Card Receipt</h3>
-    <div>
-      <ul>
-        <% @credit_cards.each do |card| %>
-          <li id="option-list"><%= link_to "#{card.name}", new_account_note_path(:account_id => card.id, :transaction_type => "Debit") %></li>
-        <% end %>
-      </ul>
-    </div>
+    <div class="ui-corner-all" id="transactionOptions">
     
-    <h3> Bill Payment</h3>
-    <div>
-      <ul>
-        <% @bills.each do |bill| %>
-          <li id="option-list"><%= link_to "#{bill.name}", new_account_note_path(:account_id => bill.id, :transaction_type => "Credit") %></li>
-        <% end %>
-      </ul>
-    </div>
-    
-    <h3> Bank Withdrawal</h3>
-    <div>
-      <ul>
-        <% @bank_accounts.each do |account| %>
-          <li id="option-list"><%= link_to "#{account.name}", new_account_note_path(:account_id => account.id, :transaction_type => "Debit") %></li>
-        <% end %>
-      </ul>
-    </div>
-    
-    <h3> Bank Deposit</h3>
-    <div>
-      <ul>
-        <% @bank_accounts.each do |account| %>
-          <li id="option-list"><%= link_to "#{account.name}", new_account_note_path(:account_id => account.id, :transaction_type => "Credit") %></li>
-        <% end %>
-      </ul>
-    </div>
-    
-    <h3> Recent Transactions</h3>
-    <div id="transactionTable">
-      <!--<h2>All Transactions</h2>-->
-      <table id="myTable">
-        <thead>
-          <tr>
-            <th>Transaction date</th>
-            <th>Explanation</th>
-            <th>Amount</th>
-          </tr>
-        </thead>
-        
-        <tbody>
-          <% @notes.each do |transaction| %>
-            <tr>
-              <td><%= transaction.transaction_date.strftime("%m-%d-%Y") %></td>
-              <!--<td><%= transaction.account.name %></td>-->
-              <td><%= transaction.explanation %></td>
-              <% if transaction.transaction_type == "Debit" %>
-                <td><%= link_to "- (#{number_to_currency(transaction.amount)})", transaction %></td>
-              <% else %>
-                <td><%= link_to "+ #{number_to_currency(transaction.amount)}", transaction %></td>
-              <% end %>
-            </tr>
+      <h3 id="receipts"> Cash Receipt</h3>
+      <div>
+        <ul>
+          <% @cash_accounts.each do |account| %>
+            <li id="option-list"><%= link_to "#{account.name}", new_account_note_path(:account_id => account.id, :transaction_type => "Debit") %></li>
           <% end %>
-        </tbody>
-      </table>
+        </ul>
+      </div>
+      
+      <h3 id="receipts"> Credit Card Receipt</h3>
+      <div>
+        <ul>
+          <% @credit_cards.each do |card| %>
+            <li id="option-list"><%= link_to "#{card.name}", new_account_note_path(:account_id => card.id, :transaction_type => "Debit") %></li>
+          <% end %>
+        </ul>
+      </div>
+      
+      <h3 id="receipts"> Bill Payment</h3>
+      <div>
+        <ul>
+          <% @bills.each do |bill| %>
+            <li id="option-list"><%= link_to "#{bill.name}", new_account_note_path(:account_id => bill.id, :transaction_type => "Credit") %></li>
+          <% end %>
+        </ul>
+      </div>
+      
+      <h3 id="receipts"> Bank Withdrawal</h3>
+      <div>
+        <ul>
+          <% @bank_accounts.each do |account| %>
+            <li id="option-list"><%= link_to "#{account.name}", new_account_note_path(:account_id => account.id, :transaction_type => "Debit") %></li>
+          <% end %>
+        </ul>
+      </div>
+      
+      <h3 id="receipts"> Bank Deposit</h3>
+      <div>
+        <ul>
+          <% @bank_accounts.each do |account| %>
+            <li id="option-list"><%= link_to "#{account.name}", new_account_note_path(:account_id => account.id, :transaction_type => "Credit") %></li>
+          <% end %>
+        </ul>
+      </div>
+      
+      <h3 id="receipts"> Recent Transactions</h3>
+      <div id="transactionTable">
+        <!--<h2>All Transactions</h2>-->
+        <table id="myTable">
+          <thead>
+            <tr>
+              <th>Transaction date</th>
+              <th>Explanation</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+          
+          <tbody>
+            <% @notes.each do |transaction| %>
+              <tr>
+                <td><%= transaction.transaction_date.strftime("%m-%d-%Y") %></td>
+                <!--<td><%= transaction.account.name %></td>-->
+                <td><%= transaction.explanation %></td>
+                <% if transaction.transaction_type == "Debit" %>
+                  <td><%= link_to "- (#{number_to_currency(transaction.amount)})", transaction %></td>
+                <% else %>
+                  <td><%= link_to "+ #{number_to_currency(transaction.amount)}", transaction %></td>
+                <% end %>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </div>

@@ -1,8 +1,8 @@
 <%= render partial: "pages/navigation" %>
-<div class="container-fluid">    
-  <%= render 'shared/flash_messages' %>
+<div class="container-fluid">
   <h3>Bank Accounts</h3>
   <div class="col-md-6 col-md-offset-3"><br>
+    <%= render 'shared/flash_messages' %>
     <%= link_to 'Back to Accounts', root_path %> |
     <%= link_to 'New Account', new_account_path %>
     <% @bank_accounts.each do |account| %>

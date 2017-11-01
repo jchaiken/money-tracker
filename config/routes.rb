@@ -7,13 +7,14 @@ Rails.application.routes.draw do
   resources :accounts
   # update notes routes so url shows transactions instead of notes
   resources :notes
-  get 'pages/home'
+  get '/home' => 'pages#home'
+  get 'budget' => 'pages#budget'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'pages#home'
+  root 'notes#index'
   
   resources :accounts do
     resources :notes
@@ -28,27 +29,6 @@ Rails.application.routes.draw do
   #get  '/signup' => 'users#new'
   get    '/login' => 'sessions#new'
   post   '/login' => 'sessions#create'
-  get '/logout' => 'sessions#destroy'
+  get   '/logout' => 'sessions#destroy'
     
-  # Example resource route with more complex sub-resources:
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
-  #       get 'recent', on: :collection
-  #     end
-  #   end
-
-  # Example resource route with concerns:
-  #   concern :toggleable do
-  #     post 'toggle'
-  #   end
-  #   resources :posts, concerns: :toggleable
-  #   resources :photos, concerns: :toggleable
-
-  # Example resource route within a namespace:
-  #   namespace :admin do
-  #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
 end

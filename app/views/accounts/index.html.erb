@@ -1,79 +1,32 @@
-<div class="page-content">
-  <div class="page-content-col">
-    <div class="row">
-      <%= render partial: "pages/navigation" %><br><br>
-      <p id="notice"><%= notice %></p>
-      <div class="col-md-5 col-md-offset-4">
-        <%= link_to 'New Account', new_account_path %> | 
-        <%= link_to 'Home', root_path %>
-        <div class="button-list">
-          <h1>Accounts</h1><br>
-          <table>
-            <thead>
-              <tr>
-                <th colspan="1"></th>
-                <th>Name</th>
-                <th>Balance</th>
-              </tr>
-            </thead>
-          
-            <tbody>
-              <% @accounts.each do |account| %>
-                <tr>
-                  <td>
-                    <div class="btn-group pull-left">
-                      <button class="btn blue btn-xs btn-outline dropdown-toggle" data-toggle="dropdown">Actions</button>
-                      <ul class="dropdown-menu pull-left">
-                        <li>
-                          <%= link_to account_path(account) do %>
-                              View
-                          <% end %>
-                        </li>
-                        <li>
-                          <%= link_to edit_account_path(account) do %>
-                              Edit
-                          <% end %>
-                        </li>
-                        <li>
-                          <%= link_to account, method: :delete, data: { confirm: 'Are you sure?' } do %>
-                              Delete
-                          <% end %>
-                        </li>
-                      </ul>
-                    </div>
-                  </td>
-                  <td><%= account.name %></td>
-                  <td style="text-align:right"><%= number_to_currency(account.balance.abs) %></td>
-                </tr>
+<%= render partial: "pages/navigation" %><br><br>
+<div class="container-fluid">
+  <div class="col-md-6 col-md-offset-3">
+    <%= render 'shared/flash_messages' %>
+    <%= link_to 'New Account', new_account_path %> | 
+    <%= link_to 'Home', root_path %>
+    <div class="button-list">
+      <h1>Accounts</h1><br>
+      <table id="myTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Balance</th>
+          </tr>
+        </thead>
+      
+        <tbody>
+          <% @accounts.each do |account| %>
+            <tr>
+              <td><%= link_to account.name, account_path(account) %></td>
+              <% if account.balance.present? %>
+              <td style="text-align:right"><%= number_to_currency(account.balance.abs) %></td>
+              <% else %>
+              <td style="text-align:right"><%= number_to_currency(account.minimum_payment.abs) %></td>
               <% end %>
-            </tbody>
-          </table>
-        </div>
-        <%= will_paginate @accounts %>
-      </div>
-      <!--<div class="col-md-4"><br>-->
-      <!--  <div class="button-list">-->
-      <!--    <h1>Related Accounts</h1><br>-->
-      <!--    <table>-->
-      <!--      <thead>-->
-      <!--        <tr>-->
-      <!--          <th>Balance</th>-->
-      <!--          <th>Name</th>-->
-      <!--        </tr>-->
-      <!--      </thead>-->
-          
-      <!--      <tbody>-->
-      <!--        <%# @related_accounts.each do |account| %>-->
-      <!--          <tr>-->
-      <!--            <td style="text-align:left"><%#= number_to_currency(account.balance.abs) %></td>-->
-      <!--            <td><%#= account.name %></td>-->
-      <!--          </tr>-->
-      <!--        <%# end %>-->
-      <!--      </tbody>-->
-      <!--    </table>-->
-      <!--  </div>-->
-      <!--  <%#= will_paginate @related_accounts %>-->
-      <!--</div>-->
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

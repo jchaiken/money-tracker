@@ -5,6 +5,10 @@ class PagesController < ApplicationController
     @bills_due = due_this_month
   end
   
+  def budget
+    @categories = Category.all
+  end
+  
   private
   
     def set_accounts

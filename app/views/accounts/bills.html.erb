@@ -1,30 +1,29 @@
 <%= render partial: "pages/navigation" %>
 <div class="container-fluid">
-  <%= render 'shared/flash_messages' %>
-  <h2>This Months Bills</h2>
   <div class="col-md-6 col-md-offset-3">
-    <%= link_to 'Back to Accounts', root_path %> |
-    <%= link_to 'New Account', new_account_path %>
-    <% @bills.each do |account| %>
-      <% if account.due_date.between?(Date.today.beginning_of_month, Date.today.end_of_month) && account.minimum_payment > 0 %>
-        <a href="<%= account_path(account) %>" class="button-list" role="button">
-          <%= "#{account.name}" %><br>
-          <%= "#{number_to_currency(account.minimum_payment.abs)}" %>
-        </a>
-      <% end %>
-    <% end %>
-  </div>
-
-  <h3>Next Months Bills</h3>
-  <div class="col-md-6 col-md-offset-3">
-    <% @bills.each do |account| %>
+    <%= render 'shared/flash_messages' %>
+    <%= link_to 'Back to Accounts', root_path %> | <%= link_to 'New Account', new_account_path %>
+    <div class="button-list">
+      <h1>Bills</h1><br>
+      <table id="myTable">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Balance</th>
+          </tr>
+        </thead>
       
-      <% if account.due_date.between?(Date.today.end_of_month + 1, Date.today.end_of_month.months_since(1)) && account.minimum_payment > 0 %>
-        <a href="<%= account_path(account) %>" class="button-list" role="button">
-          <%= "#{account.name}" %><br>
-          <%= "#{number_to_currency(account.minimum_payment.abs)}" %>
-        </a>
-      <% end %>
-    <% end %>
+        <tbody>
+          <% @bills.each do |bill| %>
+            <tr>
+              <td style="text-align:center"><%= "Paid" if bill.paid? %></td>
+              <td><%= link_to bill.name, account_path(bill) %></td>
+              <td style="text-align:right"><%= number_to_currency(bill.minimum_payment.abs) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

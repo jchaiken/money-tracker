@@ -1,11 +1,11 @@
 <%= render partial: "pages/navigation" %>
 <div class="container-fluid">
-  <%= render 'shared/flash_messages' %>
+  <h2><%= "#{@account.name}" %></h2>
+  <!--for cash and bank accounts, show balance-->
   <% if @account.account_type == "Cash" || @account.account_type == "Bank" %>
-    <h2><%= "#{@account.name}" %></h2>
     <h3><%= "Balance: #{number_to_currency(@account.balance)}" %></h3>
-  <% elsif @account.account_type == "Credit" || @account.account_type == "Bill"  %>
-    <h2><%= "#{@account.name}" %></h2>
+  <!--for credit cards, bills, and loans, show minimum payment and due date-->
+  <% elsif @account.account_type == "Credit" || @account.account_type == "Bill" || @account.account_type == "Loan" %>
     <h3><%= "Minimum Payment: #{number_to_currency(@account.minimum_payment)}" %><br>
         <%= "Due Date: #{@account.due_date.strftime("%m-%d-%Y")}" %><br>
       <% if @account.account_type == "Credit" %>
@@ -16,7 +16,7 @@
     </h3>
   <% end %><br>
   <div class="col-md-6 col-md-offset-3">
-    <p id="notice"><%= notice %></p>
+    <%= render 'shared/flash_messages' %>
     <%= link_to 'New Transaction', new_account_note_path(@account) %> |
     <%= link_to 'Edit Account', edit_account_path(@account) %> |
     <% if @account.account_type == "Cash" %>
