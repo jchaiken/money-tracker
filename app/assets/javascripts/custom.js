@@ -1,4 +1,5 @@
 $(document).ready(function() {
+  
   $("#minimum_payment, #due_date, #date_label, #balance, #credit_limit, #apr").hide();
   
   $("#account_type").change(function(){
