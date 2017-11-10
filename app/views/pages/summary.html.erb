@@ -1,0 +1,20 @@
+<%= render partial: "pages/navigation" %>
+<div class="container-fluid">
+  <div class="col-md-8 col-md-offset-2">
+    <%= render 'shared/flash_messages' %>
+    <div class="button-list" role="button">
+      <h3>Summary</h3><br>
+      
+      <p style="text-align: center">
+        <strong>Monthly Income: </strong>$6,214.80
+      </p>
+      
+      <p style="text-align: center">
+        <strong>Monthly Bills: </strong>
+        <%= number_to_currency(@total) %>
+      </p>
+      
+      
+    </div>
+  </div>
+</div>

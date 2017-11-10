@@ -10,12 +10,23 @@ class PagesController < ApplicationController
     @categories = Category.all
   end
   
+  def summary
+    @total = bill_totals
+  end
+  
   private
   
     def set_accounts
       @cash_accounts = Account.cash.sum(:balance)
       @bank_accounts = Account.bank.sum(:balance)
       @credit_cards = Account.credit.sum(:balance)
+    end
+    
+    def bill_totals
+      @bills = Account.bill.sum(:minimum_payment)
+      @loans = Account.loan.sum(:minimum_payment)
+      @credit_cards = Account.credit.sum(:minimum_payment)
+      return @bills + @loans + @credit_cards
     end
   
     def due_this_month

@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   # update notes routes so url shows transactions instead of notes
   resources :notes
   get '/home' => 'pages#home'
+  get 'summary' => 'pages#summary'
   get 'budget' => 'pages#budget'
 
   # The priority is based upon order of creation: first created -> highest priority.
