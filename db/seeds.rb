@@ -5,7 +5,9 @@ User.create!(name: "Jennifer Chaiken",
             
 categories = ["groceries", "fuel", "gas bill", "electric", "auto loan", "auto insurance", "mortgage", "dining out",
               "cc interest", "DBN expenses", "cc charges", "cc payments", "phone", "internet", "TV/entertainment",
-              "household products", "student loans", "alcohol", "cigarettes", "MJ", "lunch accounts", "CI expenses"]
+              "household products", "student loans", "alcohol", "cigarettes", "MJ", "lunch accounts", "pet supplies",
+              "Chaiken Integrations", "auto maintenance", "payroll", "house maintenance", "miscellaneous", "Angel",
+              "Morgan", "Alexis", "Ryan"]
               
 categories.each do |category|
   Category.create!(name: category,
@@ -40,7 +42,8 @@ credit_cards.each do |card|
                   credit_limit: 0.00)
 end
 
-loans = ["Capital One auto", "Mortgage", "Student Loans (Brad)", "Student Loans (Jenni)"]
+loans = ["Capital One Auto", "Mortgage", "Great Lakes (Brad)", "Great Lakes (Jenni)",
+          "Heartland/Wayne", "Nelnet"]
 
 loans.each do |loan|
   Account.create!(name: loan,
@@ -51,7 +54,8 @@ loans.each do |loan|
                   credit_limit: 0.00)
 end
 
-bills = ["DTE", "Consumers Energy", "Metro PCS", "Spectrum"]
+bills = ["DTE", "Consumers Energy", "Metro PCS", "Spectrum", "AAA Insurance", "Sling",
+          "Water Bill", "Heroku", "Cloud9", "Showtime", "Google Svcs"]
 
 bills.each do |bill|
   Account.create!(name: bill,

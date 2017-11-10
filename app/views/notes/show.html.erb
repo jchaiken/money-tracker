@@ -16,13 +16,13 @@
       
       <p>
         <strong>Amount:</strong>
-        <%= @note.amount %>
+        <%= number_to_currency(@note.amount) %>
       </p>
       
       <% if @note.related_account_id.present? %>
         <p>
           <strong>Related Account:</strong>
-          <%#= @note.related_account.name %>
+          <%= @related_account %>
         </p>
       <% end %>
       

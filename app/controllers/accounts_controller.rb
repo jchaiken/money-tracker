@@ -69,7 +69,7 @@ class AccountsController < ApplicationController
   
   def bills
     @accounts = Account.all
-    @bills = @accounts.bill + @accounts.credit + @accounts.loan
+    @bills = @accounts.bill
   end
   
   def loans

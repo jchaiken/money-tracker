@@ -29,12 +29,12 @@ class Note < ActiveRecord::Base
     end
     
     def add_to_account_balance
-      # add note amount to account balance and change due date if paying bill
+      # a credit to loan or credit card is subtracted from balance
       if account.account_type == "Loan" || account.account_type == "Credit" # update account balance, due date, and minimum payment
         account.balance -= amount
-        self.account.update!(balance: account.balance, due_date: account.due_date.months_since(1), minimum_payment: 0)
+        self.account.update!(balance: account.balance, due_date: account.due_date.months_since(1))
       elsif account.account_type == "Bill"
-        self.account.update!(due_date: account.due_date.months_since(1), minimum_payment: 0)
+        self.account.update!(due_date: account.due_date.months_since(1))
       else # update account balance
         account.balance += amount
         self.account.update!(balance: account.balance)

@@ -1,20 +1,32 @@
 <%= render partial: "pages/navigation" %><br><br>
 <div class="container-fluid">
-  <div class="col-md-9 col-md-offset-1">
+  <div class="col-md-8 col-md-offset-2">
     <%= render 'shared/flash_messages' %>
     
     <div class="button-list">
       <h1>Budget</h1><br>
-      <!--<ul>-->
-        <% @categories.each do |category| %>
-        
-          <div id="budget-list"><%= category.name %> </div>
-          
-          <div id="budget-rate">% of budget used</div><br>
-        <% end %>
-      <!--</ul>-->
+        <table class="budget-table" id="myTable">
+        <thead>
+          <tr>
+            <th>Category Name</th>
+            <th>Totals</th>
+            <th>Budget $</th>
+            <th>Budget %</th>
+          </tr>
+        </thead>
       
-      
+        <tbody id="budget-list">
+          <% @categories.each do |category| %>
+            <tr>
+              <td><%= link_to category.name, category %></td>
+              <td class="text-right" id="budget-item"><%= number_to_currency(category.this_months_totals) %></td>
+              <td class="text-right" id="budget-item"><%= number_to_currency(category.budget_amount) %></td>
+              <td>
+                <div id="budget-rate" style="text-align: center"><%= number_to_percentage(category.budget_used, precision: 0) %></div></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

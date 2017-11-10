@@ -11,6 +11,7 @@ class NotesController < ApplicationController
   end
 
   def show
+    @related_account = Account.find(@note.related_account_id).name if @note.related_account_id.present?
   end
 
   def new
@@ -68,7 +69,7 @@ class NotesController < ApplicationController
   def destroy
     @note.destroy
     respond_to do |format|
-      format.html { redirect_to notes_url, notice: 'note was successfully destroyed.' }
+      format.html { redirect_to notes_url, notice: 'Transaction was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

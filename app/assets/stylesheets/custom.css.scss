@@ -99,19 +99,22 @@ div.button-list {
 }
 
 #budget-list {
-    position: relative;
-    list-style-type: none;
     text-decoration: none;
     line-height: 2em;
-    width: 150px;
-    display: inline-block;
+}
+
+#budget-item {
+    padding: 8px 30px;
 }
 
 #budget-rate {
-    position: absolute;
+    // position: absolute;
     background-color: green;
-    width: 500px;
-    display: inline-block;
+    margin-bottom: 0px;
+    border-radius: 3px;
+    box-shadow: 0 4px 20px grey;
+    text-align: center;
+    // display: inline-block;
 }
 
 #category-name {

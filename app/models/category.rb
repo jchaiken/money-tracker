@@ -6,23 +6,20 @@ class Category < ActiveRecord::Base
     self.notes.where('transaction_type = ?', "Debit").sum(:amount)
   end
   
-  # def this_months_totals
-  #   # iterate through each category
-  #   self.each do |c|
-  #     # iterate through each transaction in each category
-  #     c.note.each do |t|
-  #       # add each debit transaction to the total
-  #       if t.transactionn_type == "Debit"
-  #         category_total += t.amount
-  #       end
-  #     end
-  #   end
-    
-    
-    
-   
-    
-  #end
+  def this_months_totals
+    month_start = Date.today.beginning_of_month
+    month_end = Date.today.end_of_month
+    self.notes.where('transaction_type = ? AND transaction_date >= ? AND transaction_date <= ?', "Debit", month_start, month_end).sum(:amount)
+  end
+  
+  def budget_used
+    month_total = self.this_months_totals
+    if month_total == 0
+      0
+    else 
+      month_total/self.budget_amount*100
+    end
+  end
   
   def last_90_days
     
