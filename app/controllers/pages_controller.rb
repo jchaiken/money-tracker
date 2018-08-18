@@ -14,6 +14,8 @@ class PagesController < ApplicationController
     @total = bill_totals
   end
   
+  
+  
   private
   
     def set_accounts

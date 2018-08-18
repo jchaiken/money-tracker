@@ -1,0 +1,40 @@
+<%= render partial: "navigation" %>
+<!--<div class="container-fluid">-->
+  <div class="dashboard-container">
+  
+    <% if logged_in? %>
+    
+    <div class="row">
+      <div class="col-6"></div>
+      <div class="col-6">
+        <div class="dashboard-panel income-panel">Income Panel</div>
+      </div>
+      
+    </div>
+    
+    <div class="row">
+      <div class="col-6">
+        <div class="dashboard-panel accounts-panel">Bank Accounts</div>
+      </div>
+      <%= link_to bills_path do %>
+      <div class="col-6">
+        <div class="dashboard-panel bills-panel">Bills</div>
+      </div>
+      <% end %>
+      
+    </div>
+    
+    <div class="row">
+      <div class="col-6">
+        <div class="dashboard-panel loans-panel">Loans</div>
+      </div>
+      <div class="col-6">
+        <div class="dashboard-panel credit-panel">Credit Cards</div>
+      </div>
+    </div>
+    
+    <% else %>
+      <%= render template: "/sessions/new" %>
+    <% end %>
+  </div>
+<!--</div>-->
