@@ -7,29 +7,50 @@
     <div class="row">
       <div class="col-6"></div>
       <div class="col-6">
-        <div class="dashboard-panel income-panel">Income Panel</div>
+        <div class="dashboard-panel income-panel">
+          <h4>Income Panel:</h4>
+          <p>This month's projected income</p>
+          <p>Last month's income</p>
+        </div>
       </div>
       
     </div>
     
     <div class="row">
       <div class="col-6">
-        <div class="dashboard-panel accounts-panel">Bank Accounts</div>
+        <div class="dashboard-panel accounts-panel">
+          <h4>Bank Accounts:</h4>
+          <p>Total current cash & bank account balance</p>
+        </div>
       </div>
+      
       <%= link_to bills_path do %>
-      <div class="col-6">
-        <div class="dashboard-panel bills-panel">Bills</div>
-      </div>
+        <div class="col-6">
+          <div class="dashboard-panel bills-panel">
+            <h4>Bills:</h4>
+            <p>Total projected this month</p>
+            <p>Total paid last month</p>
+          </div>
+        </div>
       <% end %>
       
     </div>
     
     <div class="row">
       <div class="col-6">
-        <div class="dashboard-panel loans-panel">Loans</div>
+        <div class="dashboard-panel loans-panel">
+          <h4>Loans</h4>
+          <p>Current total loan balance</p>
+          <p>Monthly loan payment total</p>
+        </div>
       </div>
       <div class="col-6">
-        <div class="dashboard-panel credit-panel">Credit Cards</div>
+        <div class="dashboard-panel credit-panel">
+          <h4>Credit Cards</h4>
+          <p>Current total credit card balance</p>
+          <p>Monthly credit card payment total</p>
+          <p></p>
+        </div>
       </div>
     </div>
     
